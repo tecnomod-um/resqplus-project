@@ -1,0 +1,81 @@
+{
+  "resourceType": "ValueSet",
+  "id": "ProcedureStatusReasonValueset",
+  "url": "http://example.org/fhir/ValueSet/ProcedureStatusReason",
+  "version": "1.0.0",
+  "name": "ProcedureStatusReasonValueset",
+  "title": "ProcedureStatusReason ValueSet",
+  "status": "draft",
+  "experimental": true,
+  "date": "2025-03-31",
+  "publisher": "Example Organization",
+  "contact": [
+    {
+      "name": "Example Organization",
+      "telecom": [
+        {
+          "system": "email",
+          "value": "info@example.org"
+        }
+      ]
+    }
+  ],
+  "description": "ValueSet containing SNOMED CT codes representing various reasons and contextual factors affecting procedure status. This collection includes codes denoting factors such as uninsured medical expenses, patient transfer to another facility, unavailability of the required drug, as well as qualifiers indicating that the procedure was not needed or that clinical findings (e.g., mild condition, disability, precerebral arterial occlusion) influenced the decision-making. The ValueSet supports consistent documentation of reasons for not performing or modifying a procedure in clinical practice.",
+  "compose": {
+    "include": [
+      {
+        "system": "http://snomed.info/sct",
+        "concept": [
+          {
+            "code": "424553001",
+            "display": "Uninsured medical expenses (finding)"
+          },
+          {
+            "code": "19712007",
+            "display": "Patient transfer, to another health care facility (procedure)"
+          },
+          {
+            "code": "242990004",
+            "display": "Drug not available for administration (event)"
+          },
+          {
+            "code": "413350009",
+            "display": "Finding with explicit context (situation)"
+          },
+          {
+            "code": "410529002",
+            "display": "Not needed (qualifier value)"
+          },
+          {
+            "code": "408835000",
+            "display": "Consent for procedure given (finding)"
+          },
+          {
+              "code": "472191000119101",
+              "display": "Thrombolysis of cerebral artery by intravenous infusion (procedure)"
+          },
+          {
+              "code": "255604002",
+              "display": "Mild (qualifier value)"
+          },
+          {
+              "code": "472191000119101",
+              "display": "Thrombolysis of cerebral artery by intravenous infusion (procedure)"
+          },
+          {
+              "code": "413350009",
+              "display": "Finding with explicit context (situation)"
+          },
+          {
+              "code": "266253001",
+              "display": "Precerebral arterial occlusion (disorder)"
+          },
+          {
+              "code": "21134002",
+              "display": "Disability (finding)"
+          }
+        ]
+      }
+    ]
+  }
+}

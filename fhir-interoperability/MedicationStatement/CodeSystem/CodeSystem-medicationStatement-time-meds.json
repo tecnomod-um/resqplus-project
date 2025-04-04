@@ -1,0 +1,40 @@
+{
+  "resourceType": "CodeSystem",
+  "id": "medicationStatement-time-meds",
+  "url": "http://example.org/fhir/CodeSystem/medicationStatement-time-meds",
+  "version": "1.0.0",
+  "name": "MedicationStatement-time-meds",
+  "title": "MedicationStatement codes",
+  "status": "draft",
+  "experimental": true,
+  "date": "2025-03-31",
+  "publisher": "Example Organization",
+  "contact": [
+    {
+      "name": "Example Organization",
+      "telecom": [
+        {
+          "system": "email",
+          "value": "info@example.org"
+        }
+      ]
+    }
+  ],
+  "description": "",
+    "compose": {
+        "include": [
+        {
+            "concept": [
+            {
+                "code": "before",
+                "display": "Treatment prescribed before admission/event"
+            },
+            {
+                "code": "on_discharge",
+                "display": "Treatment prescribed on discharge"
+            }
+        ]
+      }
+    ]
+  }
+}

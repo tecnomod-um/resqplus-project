@@ -1,0 +1,41 @@
+{
+  "resourceType": "ValueSet",
+  "id": "ProcedureStatusValueset",
+  "url": "http://example.org/fhir/ValueSet/ProcedureStatus",
+  "version": "1.0.0",
+  "name": "ProcedureStatusValueset",
+  "title": "ProcedureStatus ValueSet",
+  "status": "draft",
+  "experimental": true,
+  "date": "2025-03-31",
+  "publisher": "Example Organization",
+  "contact": [
+    {
+      "name": "Example Organization",
+      "telecom": [
+        {
+          "system": "email",
+          "value": "info@example.org"
+        }
+      ]
+    }
+  ],
+  "description": "Procedure status values",
+  "compose": {
+    "include": [
+      {
+        "system": "http://hl7.org/fhir/event-status",
+        "concept": [
+          {
+            "code": "completed",
+            "display": "Completed"
+          },
+          {
+            "code": "unknown",
+            "display": "Unknown"
+          }
+        ]
+      }
+    ]
+  }
+}

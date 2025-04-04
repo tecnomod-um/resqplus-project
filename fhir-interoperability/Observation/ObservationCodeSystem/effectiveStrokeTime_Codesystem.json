@@ -1,0 +1,43 @@
+{
+  "resourceType": "CodeSystem",
+  "id": "effectiveStrokeTime",
+  "url": "http://example.org/fhir/CodeSystem/effectiveStrokeTime",
+  "version": "1.0.0",
+  "name": "EffectiveStrokeTimeCodeSystem",
+  "title": "Effective Stroke Time CodeSystem",
+  "status": "draft",
+  "experimental": true,
+  "date": "2025-03-31",
+  "publisher": "Example Organization",
+  "contact": [
+    {
+      "name": "Example Organization",
+      "telecom": [
+        {
+          "system": "email",
+          "value": "info@example.org"
+        }
+      ]
+    }
+  ],
+  "description": "CodeSystem containing the codes to represent effective stroke time points, such as '3 months post-discharge', 'at discharge', 'pre-stroke', and 'on admission'.",
+  "content": "complete",
+  "concept": [
+    {
+      "code": "three_m",
+      "display": "3 months post-discharge"
+    },
+    {
+      "code": "discharge",
+      "display": "At discharge"
+    },
+    {
+      "code": "pre-stroke",
+      "display": "Pre Stroke"
+    },
+    {
+      "code": "admission",
+      "display": "On admission"
+    }
+  ]
+}

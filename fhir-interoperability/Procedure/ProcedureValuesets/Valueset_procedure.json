@@ -1,0 +1,77 @@
+{
+  "resourceType": "ValueSet",
+  "id": "proceduresValueset",
+  "url": "http://example.org/fhir/ValueSet/proceduresValueset",
+  "version": "1.0.0",
+  "name": "ProceduresValueset",
+  "title": "Procedures ValueSet",
+  "status": "draft",
+  "experimental": true,
+  "date": "2025-03-31",
+  "publisher": "Example Organization",
+  "contact": [
+    {
+      "name": "Example Organization",
+      "telecom": [
+        {
+          "system": "email",
+          "value": "info@example.org"
+        }
+      ]
+    }
+  ],
+  "description": "ValueSet containing SNOMED CT codes representing a range of procedures used in the evaluation and management of stroke patients. This collection includes diagnostic imaging procedures (e.g., carotid angiography, non-contrast brain CT, CT angiography with contrast, brain perfusion CT, MRI studies such as cerebrospinal fluid flow imaging, diffusion-weighted MRI, and cerebral perfusion MRI), therapeutic interventions (e.g., arterial thrombectomy and thrombolysis of cerebral artery by intravenous infusion), and screening/assessment procedures (e.g., assessment using the Gugging Swallowing Screen and tonography with water provocation).",
+  "compose": {
+    "include": [
+      {
+        "system": "http://snomed.info/sct",
+        "concept": [
+          {
+            "code": "58920005",
+            "display": "Angiography of carotid artery (procedure)"
+          },
+          {
+            "code": "396205005",
+            "display": "Computed tomography of brain without radiopaque contrast (procedure)"
+          },
+          {
+            "code": "419949007",
+            "display": "Computed tomography angiography of intracranial artery with contrast (procedure)"
+          },
+          {
+            "code": "433111008",
+            "display": "Computed tomography of brain perfusion (procedure)"
+          },
+          {
+            "code": "431225005",
+            "display": "Magnetic resonance imaging of cerebrospinal fluid flow (procedure)"
+          },
+          {
+            "code": "440408002",
+            "display": "Diffusion weighted magnetic resonance imaging (procedure)"
+          },
+          {
+            "code": "419059006",
+            "display": "Magnetic resonance imaging cerebral perfusion study (procedure)"
+          },
+          {
+            "code": "397046001",
+            "display": "Thrombectomy of artery (procedure)"
+          },
+          {
+            "code": "472191000119101",
+            "display": "Thrombolysis of cerebral artery by intravenous infusion (procedure)"
+          },
+          {
+            "code": "1290000005",
+            "display": "Assessment using Gugging Swallowing Screen (procedure)"
+          },
+          {
+            "code": "63913004",
+            "display": "Tonography with water provocation (procedure)"
+          }
+        ]
+      }
+    ]
+  }
+}

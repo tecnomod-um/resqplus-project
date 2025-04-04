@@ -1,0 +1,41 @@
+{
+  "resourceType": "ValueSet",
+  "id": "effectiveStrokeTime-NIHSS",
+  "url": "http://example.org/fhir/ValueSet/effectiveStrokeTime-NIHSS",
+  "version": "1.0.0",
+  "name": "EffectiveStrokeTimeForNIHSSObservation",
+  "title": "Effective Stroke Time for NIHSSObservation",
+  "status": "draft",
+  "experimental": true,
+  "date": "2025-03-31",
+  "publisher": "Example Organization",
+  "contact": [
+    {
+      "name": "Example Organization",
+      "telecom": [
+        {
+          "system": "email",
+          "value": "info@example.org"
+        }
+      ]
+    }
+  ],
+  "description": "ValueSet containing a subset of effective stroke time codes for NIHSS Observation (discharge, admission).",
+  "compose": {
+    "include": [
+      {
+        "system": "http://example.org/fhir/CodeSystem/effectiveStrokeTime",
+        "concept": [
+          {
+            "code": "discharge",
+            "display": "At discharge"
+          },
+          {
+            "code": "admission",
+            "display": "On admission"
+          }
+        ]
+      }
+    ]
+  }
+}

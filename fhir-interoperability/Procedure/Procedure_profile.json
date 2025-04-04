@@ -1,0 +1,69 @@
+{
+  "resourceType": "StructureDefinition",
+  "url": "https://example.org/fhir/StructureDefinition/StrokeProcedure",
+  "name": "StrokeProcedure",
+  "status": "draft",
+  "fhirVersion": "4.0.1",
+  "kind": "resource",
+  "abstract": false,
+  "type": "Procedure",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Procedure",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Procedure.status",
+        "path": "Procedure.status",
+        "short": " not-done | completed | unknown",
+        "definition": "A code specifying the state of the procedure. Generally, this will be the in-progress or completed state.",
+        "comment": "The \"unknown\" code is not to be used to convey other statuses.  The \"unknown\" code should be used when one of the statuses applies, but the authoring system doesn't know the current state of the procedure.\n\nThis element is labeled as a modifier because the status contains codes that mark the resource as not currently valid.",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "Procedure.status",
+          "min": 1,
+          "max": "1"
+        }
+      },
+      {
+        "id": "Procedure.statusReason",
+        "path": "Procedure.statusReason",
+        "short": "Reason for current status",
+        "definition": "Captures the reason for the current state of the procedure.",
+        "comment": "This is generally only used for \"exception\" statuses such as \"not-done\", \"suspended\" or \"aborted\". The reason for performing the event at all is captured in reasonCode, not here.",
+        "min": 0,
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://example.org/fhir/ValueSet/ProcedureStatusReason"
+        },
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ]
+      },
+      {
+        "id": "Procedure.code",
+        "path": "Procedure.code",
+        "min": 1,
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://example.org/fhir/ValueSet/proceduresValueset"
+        }
+      },
+      {
+        "id": "Procedure.complication",
+        "path": "Procedure.complication",
+        "min": 0,
+        "max": "1",
+        "code": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "307312008",
+            "display": "Perforation of artery (disorder)"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "stroke-condition-profile",
+  "url": "http://example.org/fhir/StructureDefinition/stroke-condition-profile",
+  "version": "1.0.0",
+  "name": "StrokeConditionProfile",
+  "title": "Stroke Condition Profile",
+  "status": "draft",
+  "experimental": true,
+  "date": "2025-03-31",
+  "publisher": "Example Organization",
+  "contact": [
+    {
+      "name": "Example Organization",
+      "telecom": [
+        {
+          "system": "email",
+          "value": "info@example.org"
+        }
+      ]
+    }
+  ],
+  "description": "A profile for documenting stroke conditions based on FHIR R4 Condition.",
+  "fhirVersion": "4.0.1",
+  "kind": "resource",
+  "abstract": false,
+  "type": "Condition",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Condition",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Condition.clinicalStatus",
+        "path": "Condition.clinicalStatus",
+        "short": "active | remission ",
+        "definition": "The clinical status of the condition.",
+        "min": 1,
+        "max": 1,
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://example.org/fhir/ValueSet/condition-clinical-active-remission"
+        }
+      },
+      {
+        "id": "Condition.code",
+        "path": "Condition.code",
+        "short": "Identification of the stroke condition, etiology, or type.",
+        "definition": "The code that identifies the stroke condition, its etiology, or type.",
+        "min": 1,
+        "max": 1,
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://example.org/fhir/ValueSet/stroke-condition-codes"
+        }
+      },
+      {
+        "id": "Condition.subject",
+        "path": "Condition.subject",
+        "short": "Who has the condition?",
+        "definition": "Indicates the patient or group who the condition record is associated with.",
+        "min": 1,
+        "max": 1
+      },
+      {
+        "id": "Condition.encounter",
+        "path": "Condition.encounter",
+        "short": "Encounter created as part of",
+        "definition":"The Encounter during which this Condition was created or to which the creation of this record is tightly associated.",
+        "min": 1,
+        "max": 1
+      }
+    ]
+  }
+}

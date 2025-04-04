@@ -1,0 +1,61 @@
+{
+  "resourceType": "ValueSet",
+  "id": "medicationStatement-meds-codes",
+  "url": "http://example.org/fhir/ValueSet/medicationStatement-meds-codes",
+  "version": "1.0.0",
+  "name": "MedicationStatement-meds-codes",
+  "title": "MedicationStatement codes",
+  "status": "draft",
+  "experimental": true,
+  "date": "2025-03-31",
+  "publisher": "Example Organization",
+  "contact": [
+    {
+      "name": "Example Organization",
+      "telecom": [
+        {
+          "system": "email",
+          "value": "info@example.org"
+        }
+      ]
+    }
+  ],
+  "description": "",
+    "compose": {
+        "include": [
+        {
+            "system": "http://snomed.ct/ct",
+            "concept": [
+            {
+                "code": "308116003",
+                "display": "Antihypertensive therapy (procedure)"
+            },
+            {
+                "code": "1237404009",
+                "display": "Uses hormone method of contraception (finding)"
+            },
+            {
+                "code": "182764009",
+                "display": "Anticoagulant therapy (procedure)"
+            },
+            {
+                "code":"413081008",
+                "display": "Administration of prophylactic clopidogrel (procedure)"
+            },
+            {
+                "code": "182764009",
+                "display": "Anticoagulant therapy (procedure)"
+            },
+            {
+                "code": "315053001",
+                "display": "Administration of prophylactic statin (procedure)"
+            },
+            {
+                "code": "722045009",
+                "display": "Warfarin therapy (procedure)"
+            }
+        ]
+      }
+    ]
+  }
+}

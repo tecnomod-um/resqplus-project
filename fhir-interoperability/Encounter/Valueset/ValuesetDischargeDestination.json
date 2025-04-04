@@ -1,0 +1,53 @@
+{
+  "resourceType": "ValueSet",
+  "id": "Discharge Destination Valueset",
+  "url": "http://example.org/fhir/ValueSet/DischargeDestinationValueset",
+  "version": "1.0.0",
+  "name": "DischargeDestinationValueset",
+  "title": "Discharge Destination Valueset",
+  "status": "draft",
+  "experimental": true,
+  "date": "2025-03-31",
+  "publisher": "Example Organization",
+  "contact": [
+    {
+      "name": "Example Organization",
+      "telecom": [
+        {
+          "system": "email",
+          "value": "info@example.org"
+        }
+      ]
+    }
+  ],
+  "description": "",
+   "compose": {
+    "include": [
+      {
+        "system": "http://snomed.info/sct",
+        "concept": [
+          {
+            "code": "1066351000000100",
+            "display": "Discharge to hospital at home service (procedure)"
+          },
+          {
+            "code": "306706006",
+            "display": "Discharge to ward (procedure)"
+          },
+          {
+            "code": "19712007",
+            "display": "Patient transfer, to another health care facility (procedure)"
+          },
+          {
+              "code":"306691003",
+              "display": "Discharge to residential home (procedure)"
+          },
+          {
+              "code": "305398007",
+              "display": "Admission to the mortuary (procedure)"
+          }
+        ]
+      }
+    ]
+  }
+}

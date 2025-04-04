@@ -1,0 +1,41 @@
+{
+  "resourceType": "ValueSet",
+  "id": "condition-clinical-active-remission",
+  "url": "http://example.org/fhir/ValueSet/condition-clinical-active-remission",
+  "version": "1.0.0",
+  "name": "ConditionClinicalStatusActiveRemission",
+  "title": "Condition Clinical Status (Active / Remission)",
+  "status": "draft",
+  "experimental": true,
+  "date": "2025-03-31",
+  "publisher": "Example Organization",
+  "contact": [
+    {
+      "name": "Example Organization",
+      "telecom": [
+        {
+          "system": "email",
+          "value": "info@example.org"
+        }
+      ]
+    }
+  ],
+  "description": "ValueSet that includes two codes from the HL7 FHIR R4 Condition Clinical Status CodeSystem: 'active' and 'remission'. 'Active' indicates that the subject is currently experiencing the condition, while 'remission' indicates that the condition is not active but there is a risk of recurrence.",
+  "compose": {
+    "include": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+        "concept": [
+          {
+            "code": "active",
+            "display": "Active"
+          },
+          {
+            "code": "remission",
+            "display": "Remission"
+          }
+        ]
+      }
+    ]
+  }
+}

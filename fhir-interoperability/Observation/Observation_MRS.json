@@ -85,6 +85,35 @@
             "code": "CodeableConcept"
           }
         ]
+      },
+      {
+        "id": "Observation.effective[x]",
+        "path": "Observation.effective[x]",
+        "code": [
+          {
+            "system": "http://example.org/fhir/CodeSystem/effectiveStrokeTime",
+            "code": "three_m",
+            "display": "3 months post-discharge"
+          },
+          {
+            "system": "http://example.org/fhir/CodeSystem/effectiveStrokeTime",
+            "code": "discharge",
+            "display": "At discharge"
+          },
+          {
+            "system": "http://example.org/fhir/CodeSystem/effectiveStrokeTime",
+            "code": "pre-stroke",
+            "display": "Pre Stroke"
+          }
+        ],
+        "type": [
+          {
+            "code": "Timing",
+            "profile": [
+              "http://example.org/fhir/Valueset/effectiveStrokeTime"
+            ]
+          }
+        ]
       }
     ]
   }

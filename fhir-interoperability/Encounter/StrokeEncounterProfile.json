@@ -1,0 +1,62 @@
+{
+  "resourceType": "StructureDefinition",
+  "url": "https://example.org/fhir/StructureDefinition/StrokeProcedure",
+  "name": "StrokeProcedure",
+  "status": "draft",
+  "fhirVersion": "4.0.1",
+  "kind": "resource",
+  "abstract": false,
+  "type": "Procedure",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Procedure",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+        "class": {
+            "system": "[Sistema de codificación de clase]",
+            "code": "[Código de la clase]",
+            "display": "[Descripción de la clase]"
+        },
+        "type": [
+            {
+            "coding": [
+                {
+                "system": "[Sistema de codificación para el tipo de encuentro]",
+                "code": "[Código SNOMED u otro]",
+                "display": "[Descripción del tipo de encuentro]"
+                }
+            ],
+            "text": "[Texto del tipo de encuentro]"
+            }
+        ],
+        "subject": {
+            "reference": "[Referencia al paciente, por ejemplo, Patient/123]"
+        },
+        "period": {
+            "start": "[Fecha y hora de inicio]",
+            "end": "[Fecha y hora de finalización]"
+        },
+        "hospitalization": {
+            "admitSource": {
+            "coding": [
+                {
+                "system": "http://snomed.info/sct",
+                "code": "[Código del Admission Source ValueSet]",
+                "display": "[Descripción de Admission Source]"
+                }
+            ],
+            "text": "[Texto adicional para Admission Source]"
+            },
+            "dischargeDisposition": {
+            "coding": [
+                {
+                "system": "http://snomed.info/sct",
+                "code": "[Código del Discharge Destination ValueSet]",
+                "display": "[Descripción de Discharge Destination]"
+                }
+            ],
+            "text": "[Texto adicional para Discharge Destination]"
+            }
+        }
+        }
+    ]
+}

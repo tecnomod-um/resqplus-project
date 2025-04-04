@@ -1,0 +1,45 @@
+{
+  "resourceType": "ValueSet",
+  "id": "effectiveStrokeTime-mRS",
+  "url": "http://example.org/fhir/ValueSet/effectiveStrokeTime-mRS",
+  "version": "1.0.0",
+  "name": "EffectiveStrokeTimeForMRSObservation",
+  "title": "Effective Stroke Time for mRSObservation",
+  "status": "draft",
+  "experimental": true,
+  "date": "2025-03-31",
+  "publisher": "Example Organization",
+  "contact": [
+    {
+      "name": "Example Organization",
+      "telecom": [
+        {
+          "system": "email",
+          "value": "info@example.org"
+        }
+      ]
+    }
+  ],
+  "description": "ValueSet containing a subset of effective stroke time codes for mRSObservation (three_m, discharge, pre-stroke).",
+  "compose": {
+    "include": [
+      {
+        "system": "http://example.org/fhir/CodeSystem/effectiveStrokeTime",
+        "concept": [
+          {
+            "code": "three_m",
+            "display": "3 months post-discharge"
+          },
+          {
+            "code": "discharge",
+            "display": "At discharge"
+          },
+          {
+            "code": "pre-stroke",
+            "display": "Pre Stroke"
+          }
+        ]
+      }
+    ]
+  }
+}
