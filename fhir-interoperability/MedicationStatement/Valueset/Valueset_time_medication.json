@@ -20,7 +20,7 @@
       ]
     }
   ],
-  "description": "",
+  "description": "This ValueSet defines codes that represent the timing context for medication statements. It includes two codes from a dedicated code system: 'before' indicates that the treatment was prescribed prior to an admission or event, while 'on_discharge' signifies that the treatment was prescribed at the time of discharge. This ValueSet supports consistent documentation of when medications are prescribed in relation to patient care events.",
     "compose": {
         "include": [
         {
