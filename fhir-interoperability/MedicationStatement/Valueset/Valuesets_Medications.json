@@ -20,7 +20,7 @@
       ]
     }
   ],
-  "description": "",
+  "description": "ValueSet containing SNOMED CT codes representing various medication-related procedures and findings. This collection includes codes for interventions such as antihypertensive therapy, anticoagulant therapy, and specific prophylactic procedures—namely, the administration of prophylactic clopidogrel, statin, and warfarin. Additionally, it features a code representing the use of a hormone-based contraception method. This ValueSet is intended to support consistent and standardized documentation of medication statements in clinical practice.",
     "compose": {
         "include": [
         {
