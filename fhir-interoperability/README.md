@@ -1,5 +1,12 @@
 # HL7 FHIR interoperability
 
+| RES-Q          | HL7 FHIR                       |
+|----------------|--------------------------------|
+| case_id        | Encounter.identifier           |
+| arrival_mode   | Encounter.admission.admitSource|
+| discharge_date | Encounter.period.end           |
+
+
 RES-Q | HL7 FHIR
 case_id | Encounter.identifier
 arrival_mode | Encounter.admission.admitSource
