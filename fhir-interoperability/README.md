@@ -1,6 +1,6 @@
 # HL7 FHIR interoperability
 
-### Información del Encuentro
+### Encounter
 
 | **RES-Q**                     | **HL7 FHIR**                             |
 |-------------------------------|------------------------------------------|
@@ -13,25 +13,25 @@
 | hospital_timestamp            | Encounter.period.start                   |
 | hospitalized_in               | Encounter.location.form                  |
 
-### Factores de Riesgo
+### Risk factors
 
 | **RES-Q**                                  | **HL7 FHIR**                            |
 |--------------------------------------------|-----------------------------------------|
 | risk_atrial_fibrillation                   | Condition.code, Condition.clinicalStatus|
-| risk_coronary_artery_disease_or_myocardial_infarction | *(no especificado)*        |
-| risk_diabetes                              | *(no especificado)*                     |
-| risk_hyperlipidemia                        | *(no especificado)*                     |
-| risk_hypertension                          | *(no especificado)*                     |
-| risk_previous_hemorrhagic_stroke           | *(no especificado)*                     |
-| risk_previous_ischemic_stroke              | *(no especificado)*                     |
-| risk_previous_stroke                       | *(no especificado)*                     |
+| risk_coronary_artery_disease_or_myocardial_infarction | *(idem)*        |
+| risk_diabetes                              | *(idem)*                      |
+| risk_hyperlipidemia                        |*(idem)*                    |
+| risk_hypertension                          | *(idem)*                     |
+| risk_previous_hemorrhagic_stroke           | *(idem)*                      |
+| risk_previous_ischemic_stroke              | *(idem)*                     |
+| risk_previous_stroke                       | *(idem)*                     |
 
-### Medicación antes del inicio
+### History Medication
 
 | **RES-Q**                        | **HL7 FHIR**                                                  |
 |----------------------------------|---------------------------------------------------------------|
 | before_onset_antidiabetics       | MedicationStatement.status, MedicationStatement.medication, MedicationStatement.effective.timing |
-| before_onset_antihypertensives   | *(idem estructura anterior)*                                  |
+| before_onset_antihypertensives   | *(idem)*                                  |
 | before_onset_any_anticoagulant   | *(idem)*                                                      |
 | before_onset_any_antiplatelet    | *(idem)*                                                      |
 | before_onset_asa                 | *(idem)*                                                      |
@@ -40,7 +40,7 @@
 | before_onset_statin              | *(idem)*                                                      |
 | before_onset_warfarin            | *(idem)*                                                      |
 
-### Tipo y Etiología del Ictus
+### Stroke type and etiology
 
 | **RES-Q**                           | **HL7 FHIR**                            |
 |-------------------------------------|-----------------------------------------|
@@ -54,9 +54,9 @@
 | bleeding_reason_malformation        | Condition.extension                     |
 | bleeding_reason_other               | Condition.extension                     |
 | onset_date                          | Condition.onsetDateTime                 |
-| onset_time                          | *(no especificado)*                     |
+| onset_time                          | Condition.onsetDateTime                    |
 
-### Procedimientos de Imagen
+### Imaging procedure
 
 | **RES-Q**         | **HL7 FHIR**                                                 |
 |-------------------|--------------------------------------------------------------|
@@ -64,7 +64,7 @@
 | imaging_timestamp | Procedure.occurrence                                         |
 | imaging_type      | Procedure.code                                               |
 
-### Trombectomía
+### Thrombectomy
 
 | **RES-Q**                  | **HL7 FHIR**                                           |
 |----------------------------|--------------------------------------------------------|
@@ -74,7 +74,7 @@
 | no_thrombectomy_reason     | Procedure.statusReason                                 |
 | mt_complications_perforation | Procedure.complication                               |
 
-### Trombolisis
+### Thrombolysis
 
 | **RES-Q**              | **HL7 FHIR**                                           |
 |------------------------|--------------------------------------------------------|
@@ -82,19 +82,19 @@
 | bolus_timestamp        | Procedure.occurrence.startTime                         |
 | no_thrombolysis_reason | Procedure.statusReason                                 |
 
-### Medicación al Alta
+### Discharge medication
 
 | **RES-Q**                  | **HL7 FHIR**                                                        |
 |----------------------------|---------------------------------------------------------------------|
 | discharge_any_anticoagulant| MedicationRequest.medication, MedicationRequest.category (discharge), MedicationRequest.authoredOn (discharge date) |
-| discharge_any_antiplatelet | *(idem estructura anterior)*                                       |
+| discharge_any_antiplatelet | *(idem)*                                       |
 | discharge_asa              | *(idem)*                                                           |
 | discharge_clopidogrel      | *(idem)*                                                           |
 | discharge_heparin          | *(idem)*                                                           |
 | discharge_other            | *(idem)*                                                           |
 | discharge_warfarin         | *(idem)*                                                           |
 
-### Valores Calculados como Observaciones
+### Calculated values as Observations
 
 | **RES-Q**         | **HL7 FHIR**                                                        |
 |-------------------|---------------------------------------------------------------------|
@@ -103,15 +103,15 @@
 | door_to_needle    | Observation.code, Observation.value, Observation.partOf (ThrombolysisProcedure) |
 | door_to_groin     | Observation.code, Observation.value, Observation.partOf (ThrombectomyProcedure) |
 
-### Observaciones de Alta o Posteriores
+### Observations at discharge and later
 
 | **RES-Q**            | **HL7 FHIR**                              |
 |----------------------|-------------------------------------------|
 | discharge_mrs        | Observation.code, Observation.value, Observation.effectiveDateTime |
-| discharge_nihss_score| *(idem estructura anterior)*              |
-| three_m_mrs          | *(no especificado)*                       |
+| discharge_nihss_score| *(idem)*              |
+| three_m_mrs          | *(idem)*                       |
 
-### Procedimiento Post Agudo
+### Post acute care procedure
 
 | **RES-Q**                   | **HL7 FHIR**                          |
 |-----------------------------|---------------------------------------|
@@ -119,7 +119,7 @@
 | swallowing_screening_timing | Procedure.occurrence                  |
 | swallowing_screening_type   | Procedure.code                        |
 
-### Otras Observaciones del Primer Encuentro
+### Other Observations at the Encounter
 
 | **RES-Q**                      | **HL7 FHIR**                                                          |
 |--------------------------------|-----------------------------------------------------------------------|
@@ -129,4 +129,4 @@
 | nihss_score                    | Observation.code, Observation.value, Observation.effectivePeriod      |
 | diastolic_pressure             | Observation.code, Observation.value, Observation.category (exam, lab result) |
 | age                            | Observation.code, Observation.value                                   |
-| atrial_fibrillation_or_flutter?| Encounter or Post acute care, Observation.code, Observation.value, Observation.category (exam, lab result) |
+| atrial_fibrillation_or_flutter| Observation.code, Observation.value, Observation.category (exam, lab result) |
