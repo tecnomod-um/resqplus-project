@@ -1,4 +1,4 @@
-# RESQPLUS-PIPELINE
+# RDF transformation pipeline
 Data pipeline for representing data according to the RERS-Q+ ontology
 ![Diagrama](DiagramaPipelineTransformacion.png)
 
