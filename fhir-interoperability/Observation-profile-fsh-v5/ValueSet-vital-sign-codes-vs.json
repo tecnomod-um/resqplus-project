@@ -1,0 +1,27 @@
+{
+  "resourceType": "ValueSet",
+  "status": "active",
+  "name": "VitalSignCodesVS",
+  "id": "vital-sign-codes-vs",
+  "version": "1.0.0",
+  "url": "http://example.org/ValueSet/vital-sign-codes-vs",
+  "title": "Stroke Vital Sign Codes ValueSet",
+  "description": "Codes for key vital signs relevant to stroke assessment (Systolic, Diastolic BP).",
+  "compose": {
+    "include": [
+      {
+        "system": "http://snomed.info/sct",
+        "concept": [
+          {
+            "code": "271649006",
+            "display": "Systolic blood pressure (observable entity)"
+          },
+          {
+            "code": "271650006",
+            "display": "Diastolic blood pressure (observable entity)"
+          }
+        ]
+      }
+    ]
+  }
+}

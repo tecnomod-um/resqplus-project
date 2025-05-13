@@ -1,0 +1,41 @@
+{
+  "resourceType": "ValueSet",
+  "status": "draft",
+  "name": "SwallowProceduresValueset",
+  "id": "swallowProceduresValueset",
+  "version": "1.0.0",
+  "url": "http://example.org/fhir/ValueSet/swallow-proceduresValueset",
+  "title": "Swallow Procedures ValueSet",
+  "description": "ValueSet containing SNOMED CT codes representing a range of procedures used in the evaluation and management of stroke patients.",
+  "experimental": true,
+  "date": "2025-03-31",
+  "publisher": "Example Organization",
+  "contact": [
+    {
+      "name": "Example Organization",
+      "telecom": [
+        {
+          "system": "email",
+          "value": "info@example.org"
+        }
+      ]
+    }
+  ],
+  "compose": {
+    "include": [
+      {
+        "system": "http://snomed.info/sct",
+        "concept": [
+          {
+            "code": "1290000005",
+            "display": "Assessment using Gugging Swallowing Screen (procedure)"
+          },
+          {
+            "code": "304909008",
+            "display": "Swallowing function test (procedure)"
+          }
+        ]
+      }
+    ]
+  }
+}

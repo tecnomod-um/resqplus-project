@@ -1,0 +1,27 @@
+{
+  "resourceType": "ValueSet",
+  "status": "active",
+  "name": "TimingMetricCodesVS",
+  "id": "timing-metric-codes-vs",
+  "version": "1.0.0",
+  "url": "http://example.org/ValueSet/timing-metric-codes-vs",
+  "title": "Stroke Timing Metric Codes ValueSet",
+  "description": "Codes for key process timing metrics in acute stroke care (D2N, D2G).",
+  "compose": {
+    "include": [
+      {
+        "system": "http://snomed.info/sct",
+        "concept": [
+          {
+            "code": "00",
+            "display": "Ask Snomed"
+          },
+          {
+            "code": "01",
+            "display": "Ask Snomed"
+          }
+        ]
+      }
+    ]
+  }
+}

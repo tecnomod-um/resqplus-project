@@ -1,0 +1,34 @@
+{
+  "resourceType": "CodeSystem",
+  "status": "active",
+  "content": "complete",
+  "name": "AssessmentContextCS",
+  "id": "assessment-context-cs",
+  "version": "1.0.0",
+  "url": "http://example.org/fhir/CodeSystem/assessment-context-cs",
+  "concept": [
+    {
+      "code": "pre-stroke",
+      "display": "Pre-stroke",
+      "definition": "Assessment reflects patient state before the current stroke event."
+    },
+    {
+      "code": "admission",
+      "display": "Admission",
+      "definition": "Assessment performed upon or shortly after hospital admission for the stroke event."
+    },
+    {
+      "code": "discharge",
+      "display": "Discharge",
+      "definition": "Assessment performed at the time of hospital discharge."
+    },
+    {
+      "code": "3-month",
+      "display": "3-Month Follow-up",
+      "definition": "Assessment performed approximately 3 months post-discharge."
+    }
+  ],
+  "title": "Assessment Context Code System",
+  "description": "Codes defining the context or timing of a clinical assessment, particularly functional scores.",
+  "count": 4
+}

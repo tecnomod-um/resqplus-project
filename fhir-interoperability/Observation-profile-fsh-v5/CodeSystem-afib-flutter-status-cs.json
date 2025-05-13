@@ -1,0 +1,34 @@
+{
+  "resourceType": "CodeSystem",
+  "status": "active",
+  "content": "complete",
+  "name": "AfibFlutterStatusCS",
+  "id": "afib-flutter-status-cs",
+  "version": "1.0.0",
+  "url": "http://example.org/fhir/CodeSystem/afib-flutter-status-cs",
+  "concept": [
+    {
+      "code": "detected",
+      "display": "Detected",
+      "definition": "Indicates that atrial fibrillation or flutter has been identified during screening or recent evaluation."
+    },
+    {
+      "code": "known-af",
+      "display": "Known AF",
+      "definition": "Signifies that the patient has a pre-existing, documented diagnosis of atrial fibrillation."
+    },
+    {
+      "code": "no-af",
+      "display": "No AF",
+      "definition": "Denotes that the patient does not exhibit atrial fibrillation or atrial flutter."
+    },
+    {
+      "code": "not-screened",
+      "display": "Not Screened",
+      "definition": "Means that no screening for atrial fibrillation or flutter has been performed."
+    }
+  ],
+  "title": "Atrial Fibrillation or Flutter Status Code System",
+  "description": "Codes representing the status of Atrial Fibrillation or Flutter assessment.",
+  "count": 4
+}

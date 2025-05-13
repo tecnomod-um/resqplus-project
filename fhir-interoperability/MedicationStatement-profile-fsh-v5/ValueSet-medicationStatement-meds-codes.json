@@ -1,0 +1,81 @@
+{
+  "resourceType": "ValueSet",
+  "status": "draft",
+  "name": "MedicationStatementMedsCodes",
+  "id": "medicationStatement-meds-codes",
+  "version": "1.0.0",
+  "url": "http://example.org/fhir/ValueSet/medicationStatement-meds-codes",
+  "title": "MedicationStatement Therapy/Finding Codes",
+  "description": "ValueSet containing SNOMED CT codes representing various medication-related procedures and findings (e.g., therapies, administration procedures, findings about use). **NOTE: These codes are generally NOT suitable for MedicationStatement.medication[x] which expects product/substance codes.**",
+  "experimental": true,
+  "date": "2025-03-31",
+  "publisher": "Example Organization",
+  "contact": [
+    {
+      "name": "Example Organization",
+      "telecom": [
+        {
+          "system": "email",
+          "value": "info@example.org"
+        }
+      ]
+    }
+  ],
+  "compose": {
+    "include": [
+      {
+        "system": "http://snomed.info/sct",
+        "concept": [
+          {
+            "code": "413081008",
+            "display": "Administration of prophylactic clopidogrel (procedure)"
+          },
+          {
+            "code": "308116003",
+            "display": "Antihypertensive therapy (procedure)"
+          },
+          {
+            "code": "722045009",
+            "display": "Warfarin therapy (procedure)"
+          },
+          {
+            "code": "1335906002",
+            "display": "Rivaroxaban therapy (procedure)"
+          },
+          {
+            "code": "1335908001",
+            "display": "Apixaban therapy (procedure)"
+          },
+          {
+            "code": "1338036007",
+            "display": "Edoxaban therapy (procedure)"
+          },
+          {
+            "code": "182764009",
+            "display": "Anticoagulant therapy (procedure)"
+          },
+          {
+            "code": "315053001",
+            "display": "Administration of prophylactic statin (procedure)"
+          },
+          {
+            "code": "443464003",
+            "display": "Low molecular weight heparin therapy (procedure)"
+          },
+          {
+            "code": "735127005",
+            "display": "Dipyridamole therapy (procedure)"
+          },
+          {
+            "code": "1237404009",
+            "display": "Uses hormone method of contraception (finding)"
+          },
+          {
+            "code": "416608005",
+            "display": "Drug therapy (procedure)"
+          }
+        ]
+      }
+    ]
+  }
+}

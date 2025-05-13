@@ -1,0 +1,29 @@
+{
+  "resourceType": "CodeSystem",
+  "status": "active",
+  "content": "complete",
+  "name": "InitialCareIntensityCS",
+  "id": "initial-care-intensity-cs",
+  "version": "1.0.0",
+  "url": "http://example.org/fhir/CodeSystem/initial-care-intensity-cs",
+  "concept": [
+    {
+      "code": "standard",
+      "display": "Standard Bed",
+      "definition": "Patient placed in a standard hospital bed without continuous monitoring."
+    },
+    {
+      "code": "monitored",
+      "display": "Monitored Bed",
+      "definition": "Patient placed in a bed with continuous telemetry or other monitoring (outside ICU)."
+    },
+    {
+      "code": "icu-stroke",
+      "display": "ICU / Stroke Unit",
+      "definition": "Patient placed in an Intensive Care Unit or specialized Stroke Unit."
+    }
+  ],
+  "title": "Initial Care Intensity Code System",
+  "description": "Codes indicating the level of care provided during the patient's initial day(s) in the hospital.",
+  "count": 3
+}

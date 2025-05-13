@@ -1,0 +1,17 @@
+{
+  "resourceType": "ValueSet",
+  "status": "active",
+  "name": "AssessmentContextVS",
+  "id": "assessment-context-vs",
+  "version": "1.0.0",
+  "url": "http://example.org/fhir/ValueSet/assessment-context-vs",
+  "title": "Assessment Context ValueSet",
+  "description": "ValueSet for assessment context codes (e.g., timing of functional scores).",
+  "compose": {
+    "include": [
+      {
+        "system": "http://example.org/fhir/CodeSystem/assessment-context-cs"
+      }
+    ]
+  }
+}

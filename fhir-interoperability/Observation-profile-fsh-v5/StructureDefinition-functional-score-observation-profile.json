@@ -1,0 +1,127 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "functional-score-observation-profile",
+  "url": "http://example.org/StructureDefinition/functional-score-observation-profile",
+  "version": "1.1.0",
+  "name": "FunctionalScoreObservationProfile",
+  "title": "Stroke Functional Score Observation Profile (R5, Timing Ext)",
+  "description": "R5 Profile for recording functional scores (mRS, NIHSS), using an extension for timing context.",
+  "fhirVersion": "5.0.0",
+  "kind": "resource",
+  "abstract": false,
+  "type": "Observation",
+  "baseDefinition": "http://example.org/StructureDefinition/base-stroke-observation",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Observation.extension",
+        "path": "Observation.extension",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "url"
+            }
+          ],
+          "ordered": false,
+          "rules": "open"
+        },
+        "min": 1
+      },
+      {
+        "id": "Observation.extension:timingContext",
+        "path": "Observation.extension",
+        "sliceName": "timingContext",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://example.org/fhir/StructureDefinition/observation-timing-context-ext"
+            ]
+          }
+        ],
+        "mustSupport": true
+      },
+      {
+        "id": "Observation.category",
+        "path": "Observation.category",
+        "min": 1,
+        "max": "1",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "code": "exam",
+              "system": "http://terminology.hl7.org/CodeSystem/observation-category"
+            }
+          ]
+        },
+        "mustSupport": true
+      },
+      {
+        "id": "Observation.code",
+        "path": "Observation.code",
+        "mustSupport": true,
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://example.org/ValueSet/functional-score-codes-vs"
+        }
+      },
+      {
+        "id": "Observation.value[x]",
+        "path": "Observation.value[x]",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "type",
+              "path": "$this"
+            }
+          ],
+          "rules": "open"
+        },
+        "min": 1,
+        "mustSupport": true
+      },
+      {
+        "id": "Observation.value[x]:MRsValue",
+        "path": "Observation.value[x]",
+        "sliceName": "MRsValue",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "condition": [
+          "obs-mrs-code",
+          "obs-6"
+        ],
+        "mustSupport": true,
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://example.org/fhir/ValueSet/mrs-score"
+        }
+      },
+      {
+        "id": "Observation.value[x]:NihssValue",
+        "path": "Observation.value[x]",
+        "sliceName": "NihssValue",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "integer"
+          }
+        ],
+        "condition": [
+          "obs-nihss-code",
+          "obs-6"
+        ],
+        "mustSupport": true
+      }
+    ]
+  }
+}

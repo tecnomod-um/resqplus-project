@@ -1,0 +1,34 @@
+{
+  "resourceType": "CodeSystem",
+  "status": "active",
+  "content": "complete",
+  "name": "DischargeDeptCS",
+  "id": "discharge-dept-cs",
+  "version": "1.0.0",
+  "url": "http://example.org/fhir/CodeSystem/discharge-dept-cs",
+  "concept": [
+    {
+      "code": "rehab-svc",
+      "display": "Acute Rehabilitation Service",
+      "definition": "Discharge/Transfer to an acute rehabilitation service."
+    },
+    {
+      "code": "neuro-svc",
+      "display": "Neurology Service",
+      "definition": "Discharge/Transfer to a neurology service."
+    },
+    {
+      "code": "step-down",
+      "display": "Step Down Unit",
+      "definition": "Discharge/Transfer to a step-down or post-care unit."
+    },
+    {
+      "code": "other-dept",
+      "display": "Other Department/Service",
+      "definition": "Discharge/Transfer to another non-specified department or service."
+    }
+  ],
+  "title": "Discharge Department/Service Code System",
+  "description": "Codes specifying the type of department or service the patient was discharged/transferred to.",
+  "count": 4
+}

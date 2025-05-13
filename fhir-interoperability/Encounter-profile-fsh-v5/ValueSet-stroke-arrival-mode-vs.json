@@ -1,0 +1,31 @@
+{
+  "resourceType": "ValueSet",
+  "status": "active",
+  "name": "StrokeArrivalModeVS",
+  "id": "stroke-arrival-mode-vs",
+  "version": "1.0.0",
+  "url": "http://example.org/fhir/ValueSet/stroke-arrival-mode-vs",
+  "title": "Stroke Arrival Mode ValueSet",
+  "description": "ValueSet specifying the mode and origin of the patient's arrival.",
+  "compose": {
+    "include": [
+      {
+        "system": "http://snomed.info/sct",
+        "concept": [
+          {
+            "code": "715537001",
+            "display": "Transportation by ambulance (procedure)"
+          },
+          {
+            "code": "715957006",
+            "display": "Transportation by own transport (procedure)"
+          },
+          {
+            "code": "384762007",
+            "display": "Transportation procedure (procedure)"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "resourceType": "ValueSet",
+  "status": "draft",
+  "name": "MTICIScoreValueSet",
+  "id": "mtici-score",
+  "version": "1.0.0",
+  "url": "http://example.org/fhir/ValueSet/mtici-score",
+  "title": "mTICI Score ValueSet",
+  "description": "ValueSet containing the codes to represent the mTICI score used to assess the degree of reperfusion after a thrombectomy procedure.",
+  "experimental": true,
+  "date": "2025-03-31",
+  "publisher": "Example Organization",
+  "contact": [
+    {
+      "name": "Example Organization",
+      "telecom": [
+        {
+          "system": "email",
+          "value": "info@example.org"
+        }
+      ]
+    }
+  ],
+  "compose": {
+    "include": [
+      {
+        "system": "http://example.org/fhir/CodeSystem/mtici-score"
+      }
+    ]
+  }
+}

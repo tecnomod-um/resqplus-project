@@ -1,0 +1,34 @@
+{
+  "resourceType": "CodeSystem",
+  "status": "active",
+  "content": "complete",
+  "name": "SwallowScreenTimeCS",
+  "id": "swallow-screen-time-cs",
+  "version": "1.0.0",
+  "url": "http://example.org/fhir/CodeSystem/swallow-screen-time-cs",
+  "concept": [
+    {
+      "code": "T4H",
+      "display": "Within 4 hours",
+      "definition": "Screening performed within 4 hours of symptom onset."
+    },
+    {
+      "code": "T24H",
+      "display": "Within 24 hours",
+      "definition": "Screening performed within 24 hours of symptom onset (but after 4h)."
+    },
+    {
+      "code": "A24H",
+      "display": "After 24 hours",
+      "definition": "Screening performed after 24 hours of symptom onset."
+    },
+    {
+      "code": "UNK",
+      "display": "Unknown time",
+      "definition": "Screening performed but timing relative to symptom onset unknown."
+    }
+  ],
+  "title": "Swallowing Screening Timing Category Code System",
+  "description": "Temporal categories relative to stroke onset for swallowing screening.",
+  "count": 4
+}

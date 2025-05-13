@@ -1,0 +1,55 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "swallowing-screening-timing-category-ext",
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-type-characteristics",
+      "valueCode": "can-bind"
+    }
+  ],
+  "url": "http://example.org/StructureDefinition/swallowing-screening-timing-category-ext",
+  "version": "1.0.0",
+  "name": "SwallowingScreeningTimingCategoryExt",
+  "title": "Swallowing Screening Timing Category",
+  "description": "Temporal category relative to stroke onset in which the swallowing screening was performed.",
+  "fhirVersion": "5.0.0",
+  "kind": "complex-type",
+  "abstract": false,
+  "context": [
+    {
+      "type": "element",
+      "expression": "Procedure"
+    }
+  ],
+  "type": "Extension",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Extension",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Extension.extension",
+        "path": "Extension.extension",
+        "max": "0"
+      },
+      {
+        "id": "Extension.url",
+        "path": "Extension.url",
+        "fixedUri": "http://example.org/StructureDefinition/swallowing-screening-timing-category-ext"
+      },
+      {
+        "id": "Extension.value[x]",
+        "path": "Extension.value[x]",
+        "min": 1,
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://example.org/ValueSet/swallowing-screening-timing-category-vs"
+        }
+      }
+    ]
+  }
+}

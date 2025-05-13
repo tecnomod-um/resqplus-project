@@ -1,0 +1,31 @@
+{
+  "resourceType": "ValueSet",
+  "status": "active",
+  "name": "SpecificFindingCodesVS",
+  "id": "specific-finding-codes-vs",
+  "version": "1.0.0",
+  "url": "http://example.org/ValueSet/specific-finding-codes-vs",
+  "title": "Specific Stroke Finding Codes ValueSet",
+  "description": "Codes for specific clinical findings relevant to stroke (Afib/Flutter status, mTICI score).",
+  "compose": {
+    "include": [
+      {
+        "system": "http://snomed.info/sct",
+        "concept": [
+          {
+            "code": "49436004",
+            "display": "Atrial fibrillation (disorder)"
+          },
+          {
+            "code": "5370000",
+            "display": "Atrial flutter (disorder)"
+          },
+          {
+            "code": "00",
+            "display": "Ask Snomed"
+          }
+        ]
+      }
+    ]
+  }
+}

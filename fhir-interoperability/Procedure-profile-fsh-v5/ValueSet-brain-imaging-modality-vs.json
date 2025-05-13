@@ -1,0 +1,47 @@
+{
+  "resourceType": "ValueSet",
+  "status": "active",
+  "name": "BrainImagingModalityVS",
+  "id": "brain-imaging-modality-vs",
+  "version": "1.0.0",
+  "url": "http://example.org/ValueSet/brain-imaging-modality-vs",
+  "title": "Brain Imaging Modality ValueSet",
+  "description": "Defines the SNOMED CT codes for individual brain imaging modalities performed as procedures.",
+  "compose": {
+    "include": [
+      {
+        "system": "http://snomed.info/sct",
+        "concept": [
+          {
+            "code": "396205005",
+            "display": "Computed tomography of brain without radiopaque contrast (procedure)"
+          },
+          {
+            "code": "419949007",
+            "display": "Computed tomography angiography of intracranial artery with contrast (procedure)"
+          },
+          {
+            "code": "433111008",
+            "display": "Computed tomography of brain perfusion (procedure)"
+          },
+          {
+            "code": "429807000",
+            "display": "Magnetic resonance imaging of brain with fluid attenuated inversion recovery sequence (procedure)"
+          },
+          {
+            "code": "440408002",
+            "display": "Diffusion weighted magnetic resonance imaging (procedure)"
+          },
+          {
+            "code": "419059006",
+            "display": "Magnetic resonance imaging cerebral perfusion study (procedure)"
+          },
+          {
+            "code": "418994000",
+            "display": "Magnetic resonance angiography of intracranial structure (procedure)"
+          }
+        ]
+      }
+    ]
+  }
+}

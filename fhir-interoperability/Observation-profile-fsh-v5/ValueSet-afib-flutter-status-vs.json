@@ -1,0 +1,17 @@
+{
+  "resourceType": "ValueSet",
+  "status": "active",
+  "name": "AfibFlutterStatusVS",
+  "id": "afib-flutter-status-vs",
+  "version": "1.0.0",
+  "url": "http://example.org/fhir/ValueSet/afib-flutter-status-vs",
+  "title": "Atrial Fibrillation or Flutter Status ValueSet",
+  "description": "ValueSet for the status of Atrial Fibrillation or Flutter assessment.",
+  "compose": {
+    "include": [
+      {
+        "system": "http://example.org/fhir/CodeSystem/afib-flutter-status-cs"
+      }
+    ]
+  }
+}

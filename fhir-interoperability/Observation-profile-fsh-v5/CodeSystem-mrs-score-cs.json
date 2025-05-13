@@ -1,0 +1,49 @@
+{
+  "resourceType": "CodeSystem",
+  "status": "active",
+  "content": "complete",
+  "name": "MRsScoreCS",
+  "id": "mrs-score-cs",
+  "version": "1.0.0",
+  "url": "http://example.org/fhir/CodeSystem/mrs-score",
+  "concept": [
+    {
+      "code": "0",
+      "display": "No symptoms",
+      "definition": "No symptoms at all."
+    },
+    {
+      "code": "1",
+      "display": "No significant disability",
+      "definition": "Despite symptoms; able to carry out all usual duties and activities."
+    },
+    {
+      "code": "2",
+      "display": "Slight disability",
+      "definition": "Unable to carry out all previous activities, but able to look after own affairs without assistance."
+    },
+    {
+      "code": "3",
+      "display": "Moderate disability",
+      "definition": "Requiring some help, but able to walk without assistance."
+    },
+    {
+      "code": "4",
+      "display": "Moderately severe disability",
+      "definition": "Unable to walk without assistance and unable to attend to own bodily needs without assistance."
+    },
+    {
+      "code": "5",
+      "display": "Severe disability",
+      "definition": "Bedridden, incontinent and requiring constant nursing care and attention."
+    },
+    {
+      "code": "6",
+      "display": "Dead",
+      "definition": "Patient deceased."
+    }
+  ],
+  "title": "modified Rankin Scale (mRS) Score Code System",
+  "description": "Codes representing the modified Rankin Scale (mRS) score for functional outcome.",
+  "count": 7
+}

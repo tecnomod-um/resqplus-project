@@ -1,0 +1,69 @@
+{
+  "resourceType": "CodeSystem",
+  "status": "active",
+  "content": "complete",
+  "name": "StrokeProcNotDoneReasonCS",
+  "id": "stroke-proc-not-done-reason-cs",
+  "version": "1.0.0",
+  "url": "http://example.org/fhir/CodeSystem/stroke-proc-not-done-reason-cs",
+  "concept": [
+    {
+      "code": "time-window",
+      "display": "Outside Therapeutic Window",
+      "definition": "Patient presented or evaluated outside the established time limit for the procedure."
+    },
+    {
+      "code": "no-lvo",
+      "display": "No Large Vessel Occlusion (LVO)",
+      "definition": "An eligible large vessel occlusion for thrombectomy was not identified."
+    },
+    {
+      "code": "contraindication",
+      "display": "Contraindication Present",
+      "definition": "A medical contraindication to the procedure existed (e.g., bleeding risk)."
+    },
+    {
+      "code": "patient-refusal",
+      "display": "Patient/Family Refusal",
+      "definition": "The patient or their legal representative refused the procedure."
+    },
+    {
+      "code": "transfer",
+      "display": "Transferred to Another Facility",
+      "definition": "The patient was transferred to another hospital for the procedure."
+    },
+    {
+      "code": "unavailable",
+      "display": "Procedure Unavailable",
+      "definition": "The procedure was not available at the facility (e.g., lack of equipment, staff)."
+    },
+    {
+      "code": "disability",
+      "display": "Severe Preexisting Disability",
+      "definition": "Patient's baseline disability made benefit from the procedure unlikely."
+    },
+    {
+      "code": "mild-stroke",
+      "display": "Mild Stroke / Rapid Improvement",
+      "definition": "Stroke symptoms were too mild or improved rapidly, not justifying the procedure risk."
+    },
+    {
+      "code": "done-elsewhere",
+      "display": "Performed Elsewhere",
+      "definition": "The procedure had already been performed at another facility prior to arrival/transfer."
+    },
+    {
+      "code": "cost",
+      "display": "Cost / No Insurance",
+      "definition": "Financial or coverage reasons prevented the procedure."
+    },
+    {
+      "code": "unknown",
+      "display": "Reason Unknown",
+      "definition": "The reason was not documented or is unknown."
+    }
+  ],
+  "title": "Stroke Procedure Not Done Reason Code System",
+  "description": "Codes specifying the reason principal for not performing a key stroke procedure (Thrombolysis, Thrombectomy).",
+  "count": 11
+}

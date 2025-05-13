@@ -1,0 +1,17 @@
+{
+  "resourceType": "ValueSet",
+  "status": "active",
+  "name": "MRsScoreVS",
+  "id": "mrs-score",
+  "version": "1.0.0",
+  "url": "http://example.org/fhir/ValueSet/mrs-score",
+  "title": "modified Rankin Scale (mRS) Score ValueSet",
+  "description": "ValueSet containing the codes for the modified Rankin Scale (mRS) score.",
+  "compose": {
+    "include": [
+      {
+        "system": "http://example.org/fhir/CodeSystem/mrs-score"
+      }
+    ]
+  }
+}

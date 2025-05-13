@@ -1,0 +1,52 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "stroke-circumstance-observation-profile",
+  "url": "http://example.org/StructureDefinition/stroke-circumstance-observation-profile",
+  "version": "1.0.0",
+  "name": "StrokeCircumstanceObservationProfile",
+  "title": "Stroke Circumstance Observation Profile (R5)",
+  "description": "R5 Profile for recording findings about stroke onset circumstances (In-hospital, Wake-up).",
+  "fhirVersion": "5.0.0",
+  "kind": "resource",
+  "abstract": false,
+  "type": "Observation",
+  "baseDefinition": "http://example.org/StructureDefinition/base-stroke-observation",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Observation.code",
+        "path": "Observation.code",
+        "mustSupport": true,
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://example.org/ValueSet/stroke-circumstance-codes-vs"
+        }
+      },
+      {
+        "id": "Observation.value[x]",
+        "path": "Observation.value[x]",
+        "min": 1,
+        "type": [
+          {
+            "code": "boolean"
+          }
+        ],
+        "mustSupport": true
+      },
+      {
+        "id": "Observation.hasMember",
+        "path": "Observation.hasMember",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://hl7.org/fhir/StructureDefinition/Observation"
+            ]
+          }
+        ],
+        "mustSupport": true
+      }
+    ]
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "resourceType": "CodeSystem",
+  "status": "active",
+  "content": "complete",
+  "name": "ProcedureTimingContextCS",
+  "id": "procedure-timing-context-cs",
+  "version": "1.0.0",
+  "url": "http://example.org/fhir/CodeSystem/procedure-timing-context-cs",
+  "concept": [
+    {
+      "code": "acute",
+      "display": "Acute Phase (<24h)",
+      "definition": "Procedure performed within 24 hours of encounter start time."
+    },
+    {
+      "code": "post-acute",
+      "display": "Post-Acute Phase (>=24h)",
+      "definition": "Procedure performed 24 hours or more after encounter start time."
+    },
+    {
+      "code": "unknown",
+      "display": "Unknown/Not Applicable",
+      "definition": "Timing relative to encounter start is unknown or not applicable."
+    }
+  ],
+  "title": "Procedure Timing Context Code System",
+  "description": "Codes defining the timing phase of a procedure relative to the encounter start (e.g., acute vs. post-acute).",
+  "count": 3
+}

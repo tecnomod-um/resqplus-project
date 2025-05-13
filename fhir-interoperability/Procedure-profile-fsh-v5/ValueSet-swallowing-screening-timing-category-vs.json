@@ -1,0 +1,17 @@
+{
+  "resourceType": "ValueSet",
+  "status": "active",
+  "name": "SwallowingScreeningTimingCategoryVS",
+  "id": "swallowing-screening-timing-category-vs",
+  "version": "1.0.0",
+  "url": "http://example.org/ValueSet/swallowing-screening-timing-category-vs",
+  "title": "Swallowing Screening Timing Category ValueSet",
+  "description": "Temporal categories relative to stroke onset for swallowing screening.",
+  "compose": {
+    "include": [
+      {
+        "system": "http://example.org/fhir/CodeSystem/swallow-screen-time-cs"
+      }
+    ]
+  }
+}

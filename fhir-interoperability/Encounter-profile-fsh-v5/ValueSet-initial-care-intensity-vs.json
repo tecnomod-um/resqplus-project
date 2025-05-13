@@ -1,0 +1,17 @@
+{
+  "resourceType": "ValueSet",
+  "status": "active",
+  "name": "InitialCareIntensityVS",
+  "id": "initial-care-intensity-vs",
+  "version": "1.0.0",
+  "url": "http://example.org/fhir/ValueSet/initial-care-intensity-vs",
+  "title": "Initial Care Intensity ValueSet",
+  "description": "ValueSet indicating the level of care provided initially.",
+  "compose": {
+    "include": [
+      {
+        "system": "http://example.org/fhir/CodeSystem/initial-care-intensity-cs"
+      }
+    ]
+  }
+}

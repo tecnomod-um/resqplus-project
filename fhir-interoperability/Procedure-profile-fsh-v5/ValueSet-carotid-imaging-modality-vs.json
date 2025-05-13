@@ -1,0 +1,35 @@
+{
+  "resourceType": "ValueSet",
+  "status": "active",
+  "name": "CarotidImagingModalityVS",
+  "id": "carotid-imaging-modality-vs",
+  "version": "1.0.0",
+  "url": "http://example.org/ValueSet/carotid-imaging-modality-vs",
+  "title": "Carotid Arteries Imaging Modality ValueSet",
+  "description": "Defines codes for different types of carotid artery imaging.",
+  "compose": {
+    "include": [
+      {
+        "system": "http://snomed.info/sct",
+        "concept": [
+          {
+            "code": "58920005",
+            "display": "Angiography of carotid artery (procedure)"
+          },
+          {
+            "code": "416940007",
+            "display": "Doppler ultrasonography of carotid arteries (procedure)"
+          },
+          {
+            "code": "419949007",
+            "display": "Computed tomography angiography of intracranial artery with contrast (procedure)"
+          },
+          {
+            "code": "418994000",
+            "display": "Magnetic resonance angiography of intracranial structure (procedure)"
+          }
+        ]
+      }
+    ]
+  }
+}

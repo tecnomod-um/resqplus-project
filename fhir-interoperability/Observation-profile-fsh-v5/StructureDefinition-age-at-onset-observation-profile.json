@@ -1,0 +1,59 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "age-at-onset-observation-profile",
+  "url": "http://example.org/StructureDefinition/age-at-onset-observation-profile",
+  "version": "1.0.0",
+  "name": "AgeAtOnsetObservationProfile",
+  "title": "Age at Stroke Onset Observation Profile (R5)",
+  "description": "R5 Profile specifically for recording the patient's age at stroke onset.",
+  "fhirVersion": "5.0.0",
+  "kind": "resource",
+  "abstract": false,
+  "type": "Observation",
+  "baseDefinition": "http://example.org/StructureDefinition/base-stroke-observation",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Observation.code",
+        "path": "Observation.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "code": "445518008",
+              "system": "http://snomed.info/sct",
+              "display": "Age at onset of clinical finding (observable entity)"
+            }
+          ]
+        },
+        "mustSupport": true
+      },
+      {
+        "id": "Observation.value[x]",
+        "path": "Observation.value[x]",
+        "min": 1,
+        "type": [
+          {
+            "code": "Quantity"
+          }
+        ],
+        "mustSupport": true
+      },
+      {
+        "id": "Observation.value[x].unit",
+        "path": "Observation.value[x].unit",
+        "patternString": "years"
+      },
+      {
+        "id": "Observation.value[x].system",
+        "path": "Observation.value[x].system",
+        "patternUri": "http://unitsofmeasure.org"
+      },
+      {
+        "id": "Observation.value[x].code",
+        "path": "Observation.value[x].code",
+        "patternCode": "a"
+      }
+    ]
+  }
+}

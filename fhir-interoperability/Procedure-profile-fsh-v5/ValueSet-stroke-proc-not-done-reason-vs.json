@@ -1,0 +1,17 @@
+{
+  "resourceType": "ValueSet",
+  "status": "active",
+  "name": "StrokeProcNotDoneReasonVS",
+  "id": "stroke-proc-not-done-reason-vs",
+  "version": "1.0.0",
+  "url": "http://example.org/fhir/ValueSet/stroke-proc-not-done-reason-vs",
+  "title": "Stroke Procedure Not Done Reason ValueSet",
+  "description": "ValueSet containing specific codes to indicate why thrombolysis or thrombectomy was not performed.",
+  "compose": {
+    "include": [
+      {
+        "system": "http://example.org/fhir/CodeSystem/stroke-proc-not-done-reason-cs"
+      }
+    ]
+  }
+}

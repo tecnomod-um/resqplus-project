@@ -1,0 +1,27 @@
+{
+  "resourceType": "ValueSet",
+  "status": "active",
+  "name": "StrokeCircumstanceCodesVS",
+  "id": "stroke-circumstance-codes-vs",
+  "version": "1.0.0",
+  "url": "http://example.org/ValueSet/stroke-circumstance-codes-vs",
+  "title": "Stroke Circumstance Codes ValueSet",
+  "description": "Codes for findings related to the circumstances of stroke onset (In-hospital, Wake-up).",
+  "compose": {
+    "include": [
+      {
+        "system": "http://snomed.info/sct",
+        "concept": [
+          {
+            "code": "230690007",
+            "display": "Cerebrovascular accident (disorder)"
+          },
+          {
+            "code": "184091000",
+            "display": "Patient in hospital (finding)"
+          }
+        ]
+      }
+    ]
+  }
+}

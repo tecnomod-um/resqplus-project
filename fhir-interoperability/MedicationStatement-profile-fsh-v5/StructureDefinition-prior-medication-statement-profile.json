@@ -1,0 +1,61 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "prior-medication-statement-profile",
+  "url": "http://example.org/StructureDefinition/prior-medication-statement-profile",
+  "version": "1.0.0",
+  "name": "PriorMedicationStatementProfile",
+  "title": "Prior Medication Statement Profile (R5)",
+  "status": "active",
+  "description": "R5 Profile: Represents a statement about the patient's medication use *before* the index event. Uses adherence.code (#taking/#not-taking) to indicate usage status.",
+  "fhirVersion": "5.0.0",
+  "kind": "resource",
+  "abstract": false,
+  "type": "MedicationStatement",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/MedicationStatement",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "MedicationStatement.medication",
+        "path": "MedicationStatement.medication",
+        "mustSupport": true,
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://example.org/fhir/ValueSet/medicationStatement-meds-code|5.0.0"
+        }
+      },
+      {
+        "id": "MedicationStatement.subject",
+        "path": "MedicationStatement.subject",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://hl7.org/fhir/StructureDefinition/Patient"
+            ]
+          }
+        ],
+        "mustSupport": true
+      },
+      {
+        "id": "MedicationStatement.reason",
+        "path": "MedicationStatement.reason",
+        "mustSupport": true
+      },
+      {
+        "id": "MedicationStatement.adherence",
+        "path": "MedicationStatement.adherence",
+        "mustSupport": true
+      },
+      {
+        "id": "MedicationStatement.adherence.code",
+        "path": "MedicationStatement.adherence.code",
+        "mustSupport": true,
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://hl7.org/fhir/ValueSet/medication-statement-adherence|5.0.0"
+        }
+      }
+    ]
+  }
+}

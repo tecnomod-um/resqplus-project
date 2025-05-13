@@ -1,0 +1,27 @@
+{
+  "resourceType": "ValueSet",
+  "status": "active",
+  "name": "FunctionalScoreCodesVS",
+  "id": "functional-score-codes-vs",
+  "version": "1.0.0",
+  "url": "http://example.org/ValueSet/functional-score-codes-vs",
+  "title": "Stroke Functional Score Codes ValueSet",
+  "description": "Codes for key functional scores used in stroke (mRS, NIHSS).",
+  "compose": {
+    "include": [
+      {
+        "system": "http://snomed.info/sct",
+        "concept": [
+          {
+            "code": "1255866005",
+            "display": "Modified Rankin Scale score (observable entity)"
+          },
+          {
+            "code": "450743008",
+            "display": "National Institutes of Health stroke scale score (observable entity)"
+          }
+        ]
+      }
+    ]
+  }
+}

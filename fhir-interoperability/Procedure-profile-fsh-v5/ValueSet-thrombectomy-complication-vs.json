@@ -1,0 +1,23 @@
+{
+  "resourceType": "ValueSet",
+  "status": "active",
+  "name": "ThrombectomyComplicationVS",
+  "id": "thrombectomy-complication-vs",
+  "version": "1.0.0",
+  "url": "http://example.org/ValueSet/thrombectomy-complication-vs",
+  "title": "Thrombectomy Complication ValueSet",
+  "description": "Defines the specific complications of thrombectomy to record.",
+  "compose": {
+    "include": [
+      {
+        "system": "http://snomed.info/sct",
+        "concept": [
+          {
+            "code": "307312008",
+            "display": "Perforation of artery (disorder)"
+          }
+        ]
+      }
+    ]
+  }
+}

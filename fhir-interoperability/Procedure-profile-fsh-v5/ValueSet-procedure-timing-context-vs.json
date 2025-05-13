@@ -1,0 +1,17 @@
+{
+  "resourceType": "ValueSet",
+  "status": "active",
+  "name": "ProcedureTimingContextVS",
+  "id": "procedure-timing-context-vs",
+  "version": "1.0.0",
+  "url": "http://example.org/fhir/ValueSet/procedure-timing-context-vs",
+  "title": "Procedure Timing Context ValueSet",
+  "description": "ValueSet for codes defining the timing phase of a procedure relative to the encounter start.",
+  "compose": {
+    "include": [
+      {
+        "system": "http://example.org/fhir/CodeSystem/procedure-timing-context-cs"
+      }
+    ]
+  }
+}

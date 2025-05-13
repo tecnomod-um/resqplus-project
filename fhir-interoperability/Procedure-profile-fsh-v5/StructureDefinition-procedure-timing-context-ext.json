@@ -1,0 +1,55 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "procedure-timing-context-ext",
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-type-characteristics",
+      "valueCode": "can-bind"
+    }
+  ],
+  "url": "http://example.org/fhir/StructureDefinition/procedure-timing-context-ext",
+  "version": "1.0.0",
+  "name": "ProcedureTimingContextExtension",
+  "title": "Procedure Timing Context Extension",
+  "description": "Specifies the timing phase (e.g., acute, post-acute) in which the procedure was performed relative to the start of the encounter.",
+  "fhirVersion": "5.0.0",
+  "kind": "complex-type",
+  "abstract": false,
+  "context": [
+    {
+      "type": "element",
+      "expression": "Procedure"
+    }
+  ],
+  "type": "Extension",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Extension",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Extension.extension",
+        "path": "Extension.extension",
+        "max": "0"
+      },
+      {
+        "id": "Extension.url",
+        "path": "Extension.url",
+        "fixedUri": "http://example.org/fhir/StructureDefinition/procedure-timing-context-ext"
+      },
+      {
+        "id": "Extension.value[x]",
+        "path": "Extension.value[x]",
+        "min": 1,
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://example.org/fhir/ValueSet/procedure-timing-context-vs"
+        }
+      }
+    ]
+  }
+}

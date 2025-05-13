@@ -1,0 +1,35 @@
+{
+  "resourceType": "ValueSet",
+  "status": "active",
+  "name": "DischargeDeptVS",
+  "id": "discharge-dept-vs",
+  "version": "1.0.0",
+  "url": "http://example.org/fhir/ValueSet/discharge-dept-vs",
+  "title": "Discharge Department/Service ValueSet",
+  "description": "ValueSet specifying the type of department or service the patient was discharged/transferred to.",
+  "compose": {
+    "include": [
+      {
+        "system": "http://snomed.info/sct",
+        "concept": [
+          {
+            "code": "309940004",
+            "display": "Rehabilitation department (environment)"
+          },
+          {
+            "code": "309937004",
+            "display": "Neurology department (environment)"
+          },
+          {
+            "code": "441480003",
+            "display": "Primary care department (environment)"
+          },
+          {
+            "code": "309912009",
+            "display": "Medical department (environment)"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,168 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "stroke-encounter-profile",
+  "url": "http://example.org/StructureDefinition/stroke-encounter-profile",
+  "version": "1.0.0",
+  "name": "StrokeEncounterProfile",
+  "title": "Stroke Encounter Profile",
+  "status": "active",
+  "description": "Profile for an Encounter resource representing a patient's hospital admission and stay for a stroke event, including key administrative and workflow details.",
+  "fhirVersion": "5.0.0",
+  "kind": "resource",
+  "abstract": false,
+  "type": "Encounter",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Encounter",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Encounter.extension",
+        "path": "Encounter.extension",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "url"
+            }
+          ],
+          "ordered": false,
+          "rules": "open"
+        },
+        "min": 4
+      },
+      {
+        "id": "Encounter.extension:isFirstHospital",
+        "path": "Encounter.extension",
+        "sliceName": "isFirstHospital",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://example.org/fhir/StructureDefinition/first-hospital-ext"
+            ]
+          }
+        ],
+        "mustSupport": true
+      },
+      {
+        "id": "Encounter.extension:initialCareIntensity",
+        "path": "Encounter.extension",
+        "sliceName": "initialCareIntensity",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://example.org/fhir/StructureDefinition/initial-care-intensity-ext"
+            ]
+          }
+        ],
+        "mustSupport": true
+      },
+      {
+        "id": "Encounter.extension:requiredPostAcuteCare",
+        "path": "Encounter.extension",
+        "sliceName": "requiredPostAcuteCare",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://example.org/fhir/StructureDefinition/required-post-acute-care-ext"
+            ]
+          }
+        ],
+        "mustSupport": true
+      },
+      {
+        "id": "Encounter.extension:dischargeDepartmentService",
+        "path": "Encounter.extension",
+        "sliceName": "dischargeDepartmentService",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://example.org/fhir/StructureDefinition/discharge-department-service-ext"
+            ]
+          }
+        ],
+        "mustSupport": true
+      },
+      {
+        "id": "Encounter.status",
+        "path": "Encounter.status",
+        "mustSupport": true
+      },
+      {
+        "id": "Encounter.class",
+        "path": "Encounter.class",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "code": "IMP",
+              "display": "inpatient encounter"
+            }
+          ]
+        },
+        "mustSupport": true
+      },
+      {
+        "id": "Encounter.type",
+        "path": "Encounter.type",
+        "mustSupport": true
+      },
+      {
+        "id": "Encounter.actualPeriod",
+        "path": "Encounter.actualPeriod",
+        "min": 1,
+        "mustSupport": true
+      },
+      {
+        "id": "Encounter.actualPeriod.start",
+        "path": "Encounter.actualPeriod.start",
+        "min": 1,
+        "mustSupport": true
+      },
+      {
+        "id": "Encounter.actualPeriod.end",
+        "path": "Encounter.actualPeriod.end",
+        "mustSupport": true
+      },
+      {
+        "id": "Encounter.length",
+        "path": "Encounter.length",
+        "mustSupport": true
+      },
+      {
+        "id": "Encounter.admission",
+        "path": "Encounter.admission",
+        "min": 1,
+        "mustSupport": true
+      },
+      {
+        "id": "Encounter.admission.admitSource",
+        "path": "Encounter.admission.admitSource",
+        "mustSupport": true,
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://example.org/fhir/ValueSet/stroke-arrival-mode-vs"
+        }
+      },
+      {
+        "id": "Encounter.admission.dischargeDisposition",
+        "path": "Encounter.admission.dischargeDisposition",
+        "mustSupport": true,
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://example.org/fhir/ValueSet/discharge-destination-vs"
+        }
+      }
+    ]
+  }
+}

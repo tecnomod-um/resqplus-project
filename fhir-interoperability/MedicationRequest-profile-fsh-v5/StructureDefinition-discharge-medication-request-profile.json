@@ -1,0 +1,72 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "discharge-medication-request-profile",
+  "url": "http://example.org/StructureDefinition/discharge-medication-request-profile",
+  "version": "1.0.0",
+  "name": "DischargeMedicationRequestProfile",
+  "title": "Discharge Medication Request Profile",
+  "status": "active",
+  "description": "Represents a medication prescription made as part of the patient's discharge plan, categorized as community administration.",
+  "fhirVersion": "5.0.0",
+  "kind": "resource",
+  "abstract": false,
+  "type": "MedicationRequest",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/MedicationRequest",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "MedicationRequest.status",
+        "path": "MedicationRequest.status",
+        "patternCode": "active",
+        "mustSupport": true
+      },
+      {
+        "id": "MedicationRequest.category",
+        "path": "MedicationRequest.category",
+        "min": 1,
+        "max": "1",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "code": "community",
+              "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-admin-location",
+              "display": "Community"
+            }
+          ]
+        },
+        "mustSupport": true
+      },
+      {
+        "id": "MedicationRequest.medication",
+        "path": "MedicationRequest.medication",
+        "mustSupport": true
+      },
+      {
+        "id": "MedicationRequest.subject",
+        "path": "MedicationRequest.subject",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://hl7.org/fhir/StructureDefinition/Patient"
+            ]
+          }
+        ],
+        "mustSupport": true
+      },
+      {
+        "id": "MedicationRequest.encounter",
+        "path": "MedicationRequest.encounter",
+        "min": 1,
+        "mustSupport": true
+      },
+      {
+        "id": "MedicationRequest.authoredOn",
+        "path": "MedicationRequest.authoredOn",
+        "min": 1,
+        "mustSupport": true
+      }
+    ]
+  }
+}

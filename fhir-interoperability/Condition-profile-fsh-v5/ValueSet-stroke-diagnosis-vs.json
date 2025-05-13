@@ -1,0 +1,39 @@
+{
+  "resourceType": "ValueSet",
+  "status": "active",
+  "name": "StrokeDiagnosisVS",
+  "id": "stroke-diagnosis-vs",
+  "title": "Stroke Diagnosis ValueSet",
+  "description": "Define los códigos SNOMED CT para los diagnósticos finales de ictus, incluyendo tipos y etiologías específicas cuando aplique.",
+  "version": "1.0.0",
+  "url": "http://example.org/ValueSet/stroke-diagnosis-vs",
+  "compose": {
+    "include": [
+      {
+        "system": "http://snomed.info/sct",
+        "concept": [
+          {
+            "code": "422504002",
+            "display": "Ischemic stroke (disorder)"
+          },
+          {
+            "code": "274100004",
+            "display": "Cerebral hemorrhage (disorder)"
+          },
+          {
+            "code": "266257000",
+            "display": "Transient ischemic attack (disorder)"
+          },
+          {
+            "code": "21454007",
+            "display": "Subarachnoid intracranial hemorrhage (disorder)"
+          },
+          {
+            "code": "95455008",
+            "display": "Thrombosis of cerebral veins (disorder)"
+          }
+        ]
+      }
+    ]
+  }
+}

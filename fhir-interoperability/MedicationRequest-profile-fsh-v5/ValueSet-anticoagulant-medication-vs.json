@@ -1,0 +1,47 @@
+{
+  "resourceType": "ValueSet",
+  "status": "draft",
+  "name": "AnticoagulantMedicationVS",
+  "id": "anticoagulant-medication-vs",
+  "version": "1.0.0",
+  "url": "http://example.org/ValueSet/anticoagulant-medication-vs",
+  "title": "Anticoagulant Medication ValueSet",
+  "description": "SNOMED CT codes for anticoagulant drug products or substances.",
+  "compose": {
+    "include": [
+      {
+        "system": "http://snomed.info/sct",
+        "concept": [
+          {
+            "code": "372720008",
+            "display": "Product containing warfarin (medicinal product)"
+          },
+          {
+            "code": "108977009",
+            "display": "Heparin preparations (product)"
+          },
+          {
+            "code": "429421000",
+            "display": "Product containing dabigatran (medicinal product)"
+          },
+          {
+            "code": "429532005",
+            "display": "Product containing rivaroxaban (medicinal product)"
+          },
+          {
+            "code": "444216007",
+            "display": "Product containing apixaban (medicinal product)"
+          },
+          {
+            "code": "703873003",
+            "display": "Product containing edoxaban (medicinal product)"
+          },
+          {
+            "code": "767432000",
+            "display": "Anticoagulant drug (product)"
+          }
+        ]
+      }
+    ]
+  }
+}

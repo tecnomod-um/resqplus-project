@@ -1,0 +1,23 @@
+{
+  "resourceType": "ValueSet",
+  "status": "active",
+  "name": "ClopidogrelMedicationVS",
+  "id": "clopidogrel-medication-vs",
+  "version": "1.0.0",
+  "url": "http://example.org/ValueSet/clopidogrel-medication-vs",
+  "title": "Clopidogrel Medication ValueSet",
+  "description": "SNOMED CT codes for Clopidogrel products.",
+  "compose": {
+    "include": [
+      {
+        "system": "http://snomed.info/sct",
+        "concept": [
+          {
+            "code": "372748007",
+            "display": "Product containing clopidogrel (medicinal product)"
+          }
+        ]
+      }
+    ]
+  }
+}
