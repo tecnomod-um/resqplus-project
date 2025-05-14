@@ -83,6 +83,18 @@
         "mustSupport": true
       },
       {
+        "id": "Procedure.occurrence[x].start",
+        "path": "Procedure.occurrence[x].start",
+        "min": 1,
+        "mustSupport": true
+      },
+      {
+        "id": "Procedure.occurrence[x].end",
+        "path": "Procedure.occurrence[x].end",
+        "min": 1,
+        "mustSupport": true
+      },
+      {
         "id": "Procedure.complication",
         "path": "Procedure.complication",
         "mustSupport": true
