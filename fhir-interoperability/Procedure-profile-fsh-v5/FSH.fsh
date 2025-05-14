@@ -213,9 +213,6 @@ Parent: FHIR_Procedure // R5 Procedure Base
 * statusReason 0..1 MS
 * statusReason from StrokeProcNotDoneReasonVS_URL (required)
 * occurrence[x] 0..1 MS
-* occurrence[x] only Period
-* occurrence[x].start 0..1 MS
-* occurrence[x].end 0..1 MS
 * extension contains ProcedureTimingContextExtension named timingContext 0..1 MS
 
 Profile: StrokeCarotidImagingProcedureProfile
@@ -253,6 +250,8 @@ Parent: FHIR_Procedure // R5 Procedure Base
 * statusReason from StrokeProcNotDoneReasonVS_URL (required)
 * occurrence[x] 1..1 MS
 * occurrence[x] only Period
+* occurrence[x].start 1..1 MS
+* occurrence[x].end 1..1 MS
 * complication 0..* MS
 * complication only CodeableReference(FHIR_Condition)
 * extension contains ProcedureTimingContextExtension named timingContext 0..1 MS
