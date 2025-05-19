@@ -73,7 +73,7 @@ Description: "Define los modos de transporte o vías por las que llegó el pacie
 * ^contact[0].telecom[0].system = #email
 * ^contact[0].telecom[0].value = "info@example.org"
 * include SCT#715537001 "Transportation by ambulance (procedure)"
-* include SCT#396205005 "Transportation by own transport (procedure)" // Nota: El código 396205005 es CT cerebral en mis VS anteriores, ¿seguro que es este código para transporte propio? Usaré el que proporcionaste. ¡Verificar!
+* include SCT#715957006 "Transportation by own transport (procedure)" // Nota: El código 396205005 es CT cerebral en mis VS anteriores, ¿seguro que es este código para transporte propio? Usaré el que proporcionaste. ¡Verificar! - Corregido por Cati, estaba mal
 * include SCT#384762007 "Transportation procedure (procedure)"
 
 ValueSet: HemorrhagicStrokeBleedingReasonVS
