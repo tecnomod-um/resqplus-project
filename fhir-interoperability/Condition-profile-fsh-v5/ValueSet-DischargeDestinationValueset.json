@@ -4,7 +4,7 @@
   "name": "DischargeDestinationValueset",
   "id": "DischargeDestinationValueset",
   "title": "Discharge Destination Valueset",
-  "description": "Define los posibles destinos del paciente al alta.",
+  "description": "Defines possible patient discharge destinations.",
   "version": "1.0.0",
   "url": "http://example.org/fhir/ValueSet/DischargeDestinationValueset",
   "experimental": true,
