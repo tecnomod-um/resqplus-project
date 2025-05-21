@@ -4,7 +4,7 @@
   "name": "AdmissionSourceValueset",
   "id": "admissionSourceValueset",
   "title": "Admission Sources ValueSet",
-  "description": "Define los modos de transporte o vías por las que llegó el paciente.",
+  "description": "Defines the modes of transport or pathways by which the patient arrived.",
   "version": "1.0.0",
   "url": "http://example.org/fhir/ValueSet/admissionSourceValueset",
   "experimental": true,
