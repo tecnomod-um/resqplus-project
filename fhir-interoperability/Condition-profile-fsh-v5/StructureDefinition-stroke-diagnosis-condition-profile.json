@@ -6,7 +6,7 @@
   "name": "StrokeDiagnosisConditionProfile",
   "title": "Stroke Diagnosis Condition Profile",
   "status": "active",
-  "description": "Representa el diagnóstico final del evento de ictus actual...",
+  "description": "Represents the final diagnosis of the current stroke event.",
   "fhirVersion": "4.0.1",
   "kind": "resource",
   "abstract": false,
