@@ -24,7 +24,6 @@ Alias: DischargeDepartmentServiceExt_URL = http://example.org/fhir/StructureDefi
 // ------------------------- Custom CodeSystems & ValueSets -------------
 
 // --- Arrival Mode ---
-
 ValueSet: StrokeArrivalModeVS
 Id: stroke-arrival-mode-vs
 * ^url = StrokeArrivalModeVS_URL
@@ -34,7 +33,6 @@ Id: stroke-arrival-mode-vs
 * include SCT#715537001 "Transportation by ambulance (procedure)"
 * include SCT#715957006 "Transportation by own transport (procedure)"
 * include SCT#384762007 "Transportation procedure (procedure)"
-
 
 // --- Discharge Destination ---
 ValueSet: DischargeDestinationVS
@@ -50,18 +48,17 @@ Id: discharge-destination-vs
 * include SCT#306691003 "Discharge to residential home (procedure)"
 * include SCT#305398007 "Admission to the mortuary (procedure)"
 
-// --- Discharge Facility/Department ---
+// --- Discharge Department/Service ---
 ValueSet: DischargeDeptVS
 Id: discharge-dept-vs
 * ^url = DischargeDeptVS_URL
 * ^title = "Discharge Department/Service ValueSet"
-* ^description = "ValueSet specifying the type of department or service the patient was discharged/transferred to."
+* ^description = "ValueSet specifying the type of department or service the patient was discharged or transferred to."
 * ^status = #active
 * include SCT#309940004 "Rehabilitation department (environment)"
 * include SCT#309937004 "Neurology department (environment)"
 * include SCT#441480003 "Primary care department (environment)"
 * include SCT#309912009 "Medical department (environment)"
-
 
 // --- Initial Care Intensity ---
 CodeSystem: InitialCareIntensityCS
@@ -139,7 +136,7 @@ Parent: Encounter
 * extension contains FirstHospitalExtension named isFirstHospital 1..1 MS and
     InitialCareIntensityExtension named initialCareIntensity 1..1 MS and
     RequiredPostAcuteCareExtension named requiredPostAcuteCare 1..1 MS and
-   DischargeDepartmentServiceExtension named dischargeDepartmentService 1..1 MS
+    DischargeDepartmentServiceExtension named dischargeDepartmentService 1..1 MS
 
 // Standard Encounter Elements
 * status 1..1 MS
@@ -149,15 +146,15 @@ Parent: Encounter
 
 // Period (Start/End Dates)
 * actualPeriod 1..1 MS
-* actualPeriod.start 1..1 MS // hospital_timestamp
-* actualPeriod.end 0..1 MS // discharge_date
+* actualPeriod.start 1..1 MS // hospital timestamp
+* actualPeriod.end 0..1 MS // discharge date
 
 // Length of Stay
 * length MS
 
 // Hospitalization Details
 * admission 1..1 MS
-* admission.admitSource 0..1 MS // arrival_mode
+* admission.admitSource 0..1 MS // arrival mode
 * admission.admitSource from StrokeArrivalModeVS_URL (required)
-* admission.dischargeDisposition 0..1 MS // discharge_destination
+* admission.dischargeDisposition 0..1 MS // discharge destination
 * admission.dischargeDisposition from DischargeDestinationVS_URL (required)
