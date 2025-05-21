@@ -4,7 +4,7 @@
   "name": "StrokeDiagnosisVS",
   "id": "stroke-diagnosis-vs",
   "title": "Stroke Diagnosis ValueSet",
-  "description": "Define los códigos SNOMED CT para los diagnósticos finales de ictus, incluyendo tipos y etiologías específicas cuando aplique.",
+  "description": "Defines the SNOMED CT codes for final stroke diagnoses, including specific types and etiologies where applicable.",
   "version": "1.0.0",
   "url": "http://example.org/ValueSet/stroke-diagnosis-vs",
   "compose": {
