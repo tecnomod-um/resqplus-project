@@ -4,7 +4,7 @@
   "name": "StrokeRiskFactorVS",
   "id": "stroke-risk-factor-vs",
   "title": "Stroke Risk Factor ValueSet",
-  "description": "Define los códigos SNOMED CT para condiciones o factores de riesgo relevantes para ictus.",
+  "description": "Defines the SNOMED CT codes for conditions or risk factors relevant to stroke.",
   "version": "1.0.0",
   "url": "http://example.org/ValueSet/stroke-risk-factor-vs",
   "compose": {
