@@ -6,11 +6,11 @@ Alias: CondVerStatus = http://terminology.hl7.org/CodeSystem/condition-ver-statu
 Alias: BleedingReasonCS = https://example.org/fhir/CodeSystem/stroke-bleeding-reason
 Alias: IschemicEtiologyCS = https://example.org/fhir/CodeSystem/stroke-ischemic-etiology
 
-// ValueSet para Tipos/Diagnósticos de Ictus (con Displays)
+// ValueSet for Stroke Diagnosis (with Displays)
 ValueSet: StrokeDiagnosisVS
 Id: stroke-diagnosis-vs
 Title: "Stroke Diagnosis ValueSet"
-Description: "Define los códigos SNOMED CT para los diagnósticos finales de ictus, incluyendo tipos y etiologías específicas cuando aplique."
+Description: "Defines the SNOMED CT codes for final stroke diagnoses, including specific types and etiologies where applicable."
 * ^status = #active
 * include SCT#422504002 "Ischemic stroke (disorder)"
 * include SCT#274100004 "Cerebral hemorrhage (disorder)"
@@ -18,11 +18,11 @@ Description: "Define los códigos SNOMED CT para los diagnósticos finales de ic
 * include SCT#21454007 "Subarachnoid intracranial hemorrhage (disorder)"
 * include SCT#95455008 "Thrombosis of cerebral veins (disorder)"
 
-// ValueSet para Factores de Riesgo de Ictus (con Displays)
+// ValueSet for Stroke Risk Factors (with Displays)
 ValueSet: StrokeRiskFactorVS
 Id: stroke-risk-factor-vs
 Title: "Stroke Risk Factor ValueSet"
-Description: "Define los códigos SNOMED CT para condiciones o factores de riesgo relevantes para ictus."
+Description: "Defines the SNOMED CT codes for conditions or risk factors relevant to stroke."
 * ^status = #active
 * include SCT#49436004 "Atrial fibrillation (disorder)"
 * include SCT#5370000 "Atrial flutter (disorder)"
@@ -31,16 +31,16 @@ Description: "Define los códigos SNOMED CT para condiciones o factores de riesg
 * include SCT#73211009 "Diabetes mellitus (disorder)"
 * include SCT#55822004 "Hyperlipidemia (disorder)"
 * include SCT#38341003 "Hypertensive disorder, systemic arterial (disorder)"
-* include SCT#230706003 "Hemorrhagic cerebral infarction (disorder)" // Hemorragia previa
-* include SCT#266257000 "Transient ischemic attack (disorder)" // TIA previo
-* include SCT#422504002 "Ischemic stroke (disorder)" // Ictus isquémico previo
-* include SCT#230690007 "Cerebrovascular accident (disorder)" // Ictus general previo
+* include SCT#230706003 "Hemorrhagic cerebral infarction (disorder)" // Prior hemorrhage
+* include SCT#266257000 "Transient ischemic attack (disorder)" // Previous TIA
+* include SCT#422504002 "Ischemic stroke (disorder)" // Previous ischemic stroke
+* include SCT#230690007 "Cerebrovascular accident (disorder)" // General previous stroke
 
-// ValueSet para Destino del Alta (Nuevo)
-ValueSet: DischargeDestinationVS // Nombre FSH descriptivo
-Id: DischargeDestinationValueset // ID del JSON
-Title: "Discharge Destination Valueset"
-Description: "Define los posibles destinos del paciente al alta." // Descripción añadida
+// ValueSet for Discharge Destination (New)
+ValueSet: DischargeDestinationVS
+Id: DischargeDestinationValueset
+Title: "Discharge Destination ValueSet"
+Description: "Defines possible patient discharge destinations."
 * ^url = "http://example.org/fhir/ValueSet/DischargeDestinationValueset"
 * ^version = "1.0.0"
 * ^name = "DischargeDestinationValueset"
@@ -57,11 +57,11 @@ Description: "Define los posibles destinos del paciente al alta." // Descripció
 * include SCT#306691003 "Discharge to residential home (procedure)"
 * include SCT#305398007 "Admission to the mortuary (procedure)"
 
-// ValueSet para Origen de la Admisión (Nuevo)
-ValueSet: AdmissionSourceVS // Nombre FSH descriptivo
-Id: admissionSourceValueset // ID del JSON
+// ValueSet for Admission Source (New)
+ValueSet: AdmissionSourceVS
+Id: admissionSourceValueset
 Title: "Admission Sources ValueSet"
-Description: "Define los modos de transporte o vías por las que llegó el paciente." // Descripción añadida
+Description: "Defines the modes of transport or pathways by which the patient arrived."
 * ^url = "http://example.org/fhir/ValueSet/admissionSourceValueset"
 * ^version = "1.0.0"
 * ^name = "AdmissionSourceValueset"
@@ -73,16 +73,16 @@ Description: "Define los modos de transporte o vías por las que llegó el pacie
 * ^contact[0].telecom[0].system = #email
 * ^contact[0].telecom[0].value = "info@example.org"
 * include SCT#715537001 "Transportation by ambulance (procedure)"
-* include SCT#715957006 "Transportation by own transport (procedure)" // Nota: El código 396205005 es CT cerebral en mis VS anteriores, ¿seguro que es este código para transporte propio? Usaré el que proporcionaste. ¡Verificar! - Corregido por Cati, estaba mal
+* include SCT#715957006 "Transportation by own transport (procedure)" // Note: Verify this code, was corrected per input.
 * include SCT#384762007 "Transportation procedure (procedure)"
 
 ValueSet: HemorrhagicStrokeBleedingReasonVS
-Id: Hemorrhagic-stroke-bleeding-reason-vs
+Id: hemorrhagic-stroke-bleeding-reason-vs
 Title: "Hemorrhagic Stroke Bleeding Reason ValueSet"
 * ^description = "Specifies the identified cause of a hemorrhagic stroke, typically used with an extension."
 * ^url = "http://example.org/fhir/ValueSet/HemorrhagicStrokeBleedingReasonVS"
 * ^version = "1.0.0"
-* ^name = "Hemorrhagic-stroke-bleeding-reason-vs"
+* ^name = "hemorrhagic-stroke-bleeding-reason-vs"
 * ^status = #draft
 * ^experimental = true
 * ^date = "2025-03-31"
@@ -90,19 +90,18 @@ Title: "Hemorrhagic Stroke Bleeding Reason ValueSet"
 * ^contact[0].name = "Example Organization"
 * ^contact[0].telecom[0].system = #email
 * ^contact[0].telecom[0].value = "info@example.org"
-* ^status = #draft
 * include SCT#128609009 "Intracranial aneurysm (disorder)"
 * include SCT#703221003 "Congenital intracranial vascular malformation (disorder)"
 * include SCT#64572001 "Disease (disorder)"
 * include SCT#71388002 "Procedure (procedure)"
 
 ValueSet: IschemicStrokeEtiologyVS
-Id: Ischemic-stroke-etiology-vs
+Id: ischemic-stroke-etiology-vs
 Title: "Ischemic Stroke Etiology ValueSet"
-Description: "Specifies the determined etiology of an ischemic stroke" // Descripción añadida
+Description: "Specifies the determined etiology of an ischemic stroke."
 * ^url = "http://example.org/fhir/ValueSet/IschemicStrokeEtiologyVS"
 * ^version = "1.0.0"
-* ^name = "Ischemic-stroke-etiology-vs"
+* ^name = "ischemic-stroke-etiology-vs"
 * ^status = #draft
 * ^experimental = true
 * ^date = "2025-03-31"
@@ -110,7 +109,6 @@ Description: "Specifies the determined etiology of an ischemic stroke" // Descri
 * ^contact[0].name = "Example Organization"
 * ^contact[0].telecom[0].system = #email
 * ^contact[0].telecom[0].value = "info@example.org"
-* ^status = #draft
 * include SCT#724425005 "Cerebral ischemic stroke due to intracranial large artery atherosclerosis (disorder)"
 * include SCT#724426006 "Cerebral ischemic stroke due to extracranial large artery atherosclerosis (disorder)"
 * include SCT#1251566005 "Embolism from heart (disorder)"
@@ -119,9 +117,8 @@ Description: "Specifies the determined etiology of an ischemic stroke" // Descri
 * include SCT#230698000 "Lacunar infarction (disorder)"
 * include SCT#443929000 "Small vessel cerebrovascular disease (disorder)"
 
-
 // ------------------ Extensions ---------------------------------
-// (Sin cambios respecto a la versión anterior)
+// (No changes from previous version)
 Extension: HemorrhagicStrokeBleedingReasonExt
 Id: hemorrhagic-stroke-bleeding-reason-ext
 * ^context.type = #element
@@ -136,14 +133,14 @@ Id: ischemic-stroke-etiology-ext
 * value[x] only CodeableConcept
 * valueCodeableConcept from IschemicStrokeEtiologyVS (required)
 
-// ------------------ Perfiles de Condition -----------------------
+// ------------------ Condition Profiles -------------------------
 
-// --- 1. Perfil para el Diagnóstico Principal del Ictus ---
+// --- 1. Profile for Primary Stroke Diagnosis ---
 Profile: StrokeDiagnosisConditionProfile
 Id: stroke-diagnosis-condition-profile
 Parent: Condition
 Title: "Stroke Diagnosis Condition Profile"
-Description: "Representa el diagnóstico final del evento de ictus actual..."
+Description: "Represents the final diagnosis of the current stroke event."
 * ^status = #active
 
 * clinicalStatus MS
@@ -156,27 +153,27 @@ Description: "Representa el diagnóstico final del evento de ictus actual..."
 * code 1..1 MS
 * code from StrokeDiagnosisVS (required)
 
-* subject 1..1 // Cardinalidad
-* subject only Reference(Patient) // Tipo
-* subject MS // Flag
+* subject 1..1
+* subject only Reference(Patient)
+* subject MS
 
-* encounter 1..1 // Cardinalidad
-* encounter only Reference(Encounter) // Tipo
-* encounter MS // Flag
+* encounter 1..1
+* encounter only Reference(Encounter)
+* encounter MS
 
-* onset[x] 1..1 // Cardinalidad
-* onset[x] only dateTime // Tipo
-* onset[x] MS // Flag
+* onset[x] 1..1
+* onset[x] only dateTime
+* onset[x] MS
 
 * extension contains HemorrhagicStrokeBleedingReasonExt named bleedingReason 0..1 MS
 * extension contains IschemicStrokeEtiologyExt named ischemicEtiology 0..1 MS
 
-// --- 2. Perfil para Factores de Riesgo de Ictus ---
+// --- 2. Profile for Stroke Risk Factor Conditions ---
 Profile: StrokeRiskFactorConditionProfile
 Id: stroke-risk-factor-condition-profile
 Parent: Condition
 Title: "Stroke Risk Factor Condition Profile"
-Description: "Representa una condición o factor de riesgo conocido relevante para ictus."
+Description: "Represents a known condition or risk factor relevant to stroke."
 * ^status = #active
 
 * clinicalStatus MS
@@ -189,12 +186,12 @@ Description: "Representa una condición o factor de riesgo conocido relevante pa
 * code 1..1 MS
 * code from StrokeRiskFactorVS (required)
 
-* subject 1..1 // Cardinalidad
-* subject only Reference(Patient) // Tipo
-* subject MS // Flag
+* subject 1..1
+* subject only Reference(Patient)
+* subject MS
 
 * onset[x] MS
 * recordedDate MS
 
-* encounter only Reference(Encounter) // Tipo (Cardinalidad es 0..1 por defecto)
-* encounter MS // Flag
+* encounter only Reference(Encounter)
+* encounter MS
