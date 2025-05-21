@@ -6,7 +6,7 @@
   "name": "StrokeRiskFactorConditionProfile",
   "title": "Stroke Risk Factor Condition Profile",
   "status": "active",
-  "description": "Representa una condición o factor de riesgo conocido relevante para ictus.",
+  "description": "Represents a known condition or risk factor relevant to stroke.",
   "fhirVersion": "4.0.1",
   "kind": "resource",
   "abstract": false,
