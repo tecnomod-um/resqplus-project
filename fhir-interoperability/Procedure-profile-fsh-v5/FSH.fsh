@@ -233,14 +233,14 @@ Parent: FHIR_Procedure // R5 Procedure Base
 * extension contains ProcedureTimingContextExtension named timingContext 0..1 MS
 
 
-Profile: StrokePerforationProcedureProfile
-Id: stroke-perforation-procedure-profile
+Profile: StrokeThrombolysisProcedureProfile
+Id: stroke-thrombolysis-procedure-profile
 Parent: FHIR_Procedure // R5 Procedure Base
 * ^fhirVersion = #5.0.0 // Specify R5
 * ^url = "http://example.org/StructureDefinition/stroke-perforation-procedure-profile"
 * ^version = "1.2.0" // Incremented version for R5 update
-* ^name = "StrokePerforationProcedureProfile"
-* ^title = "Stroke Perforation Procedure Profile (R5)" // Indicate R5
+* ^name = "StrokeThrombolysisProcedureProfile"
+* ^title = "Stroke Thrombolysis Procedure Profile (R5)" // Indicate R5
 * ^description = "Enhanced FHIR R5 Procedure profile to record key stroke procedures, including status, timing, complications, reasons, and context." // Indicate R5
 * ^status = #active
 * code from PerforationProceduresVS_URL (required)
