@@ -42,11 +42,10 @@ Id: discharge-destination-vs
 * ^description = "Defines the possible destinations of the patient upon discharge from the encounter."
 * ^status = #active
 * include SCT#306689006 "Discharge to home (procedure)"
-* include SCT#1066351000000100 "Discharge to hospital at home service (procedure)"
-* include SCT#306706006 "Discharge to ward (procedure)"
+* include SCT#37729005 "Patient transfer, in-hospital (procedure)" 
 * include SCT#19712007 "Patient transfer, to another health care facility (procedure)"
-* include SCT#306691003 "Discharge to residential home (procedure)"
-* include SCT#305398007 "Admission to the mortuary (procedure)"
+* include SCT#306694006 "Discharge to nursing home (procedure)" 
+* include SCT#371828006 "Patient deceased during stay (discharge status = dead) (finding)" 
 
 // --- Discharge Department/Service ---
 ValueSet: DischargeDeptVS
