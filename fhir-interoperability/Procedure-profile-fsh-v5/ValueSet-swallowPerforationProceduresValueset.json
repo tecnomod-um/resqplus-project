@@ -1,0 +1,41 @@
+{
+  "resourceType": "ValueSet",
+  "status": "draft",
+  "name": "PerforationProceduresValueset",
+  "id": "swallowPerforationProceduresValueset",
+  "version": "1.0.0",
+  "url": "http://example.org/fhir/ValueSet/perforation-proceduresValueset",
+  "title": "Perforation Procedures ValueSet",
+  "description": "ValueSet containing SNOMED CT codes representing a range of perforation procedures.",
+  "experimental": true,
+  "date": "2025-03-31",
+  "publisher": "Example Organization",
+  "contact": [
+    {
+      "name": "Example Organization",
+      "telecom": [
+        {
+          "system": "email",
+          "value": "info@example.org"
+        }
+      ]
+    }
+  ],
+  "compose": {
+    "include": [
+      {
+        "system": "http://snomed.info/sct",
+        "concept": [
+          {
+            "code": "472191000119101",
+            "display": "Thrombolysis of cerebral artery by intravenous infusion (procedure)"
+          },
+          {
+            "code": "397046001",
+            "display": "Thrombectomy of artery (procedure)"
+          }
+        ]
+      }
+    ]
+  }
+}
