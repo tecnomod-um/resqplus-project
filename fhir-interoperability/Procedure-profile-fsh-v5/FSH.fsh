@@ -170,6 +170,25 @@ Id: swallowProceduresValueset
 * include SCT#1290000005 "Assessment using Gugging Swallowing Screen (procedure)"
 * include SCT#304909008 "Swallowing function test (procedure)"
 
+// --- ValueSet: Procedures (General) ---
+ValueSet: PerforationProceduresVS_URL
+Id: swallowPerforationProceduresValueset
+* ^url = PerforationProceduresVS_URL
+* ^name = "PerforationProceduresValueset"
+* ^version = "1.0.0"
+* ^title = "Perforation Procedures ValueSet"
+* ^description = "ValueSet containing SNOMED CT codes representing a range of perforation procedures."
+* ^status = #draft
+* ^experimental = true
+* ^date = "2025-03-31"
+* ^publisher = "Example Organization"
+* ^contact[0].name = "Example Organization"
+* ^contact[0].telecom[0].system = #email
+* ^contact[0].telecom[0].value = "info@example.org"
+* include SCT#472191000119101 "Thrombolysis of cerebral artery by intravenous infusion (procedure)"
+* include SCT#397046001 "Thrombectomy of artery (procedure)"
+
+
 // ------------------------- Extensions (R5 Compatible) ---------------------------
 Extension: SwallowingScreeningTimingCategoryExt
 Id: swallowing-screening-timing-category-ext
