@@ -10,14 +10,10 @@ Alias: FHIR_Organization = http://hl7.org/fhir/StructureDefinition/Organization
 Alias: FHIR_Device = http://hl7.org/fhir/StructureDefinition/Device
 Alias: FHIR_CodeableConcept = http://hl7.org/fhir/StructureDefinition/CodeableConcept
 Alias: MedReqAdminLocCS = http://terminology.hl7.org/CodeSystem/medicationrequest-admin-location // *** NEW ALIAS ***
-// --- Primero, alias para el VS de 'absent or unknown' ---
 Alias: AbsentOrUnknownVS = https://hl7.org/fhir/uv/ips/ValueSet-absent-or-unknown-medications-uv-ips.html
 
 // URLs for Medication ValueSets
 Alias: MedicationVS_URL = http://example.org/ValueSet/medication-vs
-
-// --- Medication ValueSets ---
-// ...(Keep definitions for AnticoagulantMedicationVS, AntiplateletMedicationVS, etc. as before)...
 
 ValueSet: MedicationVS
 Id: medication-vs
@@ -42,9 +38,6 @@ Id: medication-vs
 * include SCT#373208002 "Platelet aggregation inhibitor (product)"
 * include SCT#372749004 "Product containing enoxaparin (medicinal product)"
 
-// ------------------ ValueSet Combinado ------------------
-
-// 2) Tu ValueSet combinado
 ValueSet: DischargeMedicationVS
 Id: discharge-medication-vs
 * ^url = "http://example.org/ValueSet/discharge-medication-vs"
