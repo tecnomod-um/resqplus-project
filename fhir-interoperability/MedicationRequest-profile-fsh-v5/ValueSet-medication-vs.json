@@ -1,0 +1,75 @@
+{
+  "resourceType": "ValueSet",
+  "status": "draft",
+  "name": "MedicationVS",
+  "id": "medication-vs",
+  "version": "1.0.0",
+  "url": "http://example.org/ValueSet/medication-vs",
+  "title": "Medications ValueSet",
+  "description": "SNOMED CT codes for drug products or substances.",
+  "compose": {
+    "include": [
+      {
+        "system": "http://snomed.info/sct",
+        "concept": [
+          {
+            "code": "372720008",
+            "display": "Product containing warfarin (medicinal product)"
+          },
+          {
+            "code": "108977009",
+            "display": "Heparin preparations (product)"
+          },
+          {
+            "code": "429421000",
+            "display": "Product containing dabigatran (medicinal product)"
+          },
+          {
+            "code": "429532005",
+            "display": "Product containing rivaroxaban (medicinal product)"
+          },
+          {
+            "code": "444216007",
+            "display": "Product containing apixaban (medicinal product)"
+          },
+          {
+            "code": "703873003",
+            "display": "Product containing edoxaban (medicinal product)"
+          },
+          {
+            "code": "767432000",
+            "display": "Anticoagulant drug (product)"
+          },
+          {
+            "code": "387458008",
+            "display": "Product containing acetylsalicylic acid (medicinal product form)"
+          },
+          {
+            "code": "372748007",
+            "display": "Product containing clopidogrel (medicinal product)"
+          },
+          {
+            "code": "417859008",
+            "display": "Product containing ticagrelor (medicinal product)"
+          },
+          {
+            "code": "412198007",
+            "display": "Product containing prasugrel (medicinal product)"
+          },
+          {
+            "code": "372761000",
+            "display": "Product containing dipyridamole (medicinal product)"
+          },
+          {
+            "code": "373208002",
+            "display": "Platelet aggregation inhibitor (product)"
+          },
+          {
+            "code": "372749004",
+            "display": "Product containing enoxaparin (medicinal product)"
+          }
+        ]
+      }
+    ]
+  }
+}
