@@ -1,0 +1,23 @@
+{
+  "resourceType": "ValueSet",
+  "name": "StrokeRiskFactorVS",
+  "id": "stroke-risk-factor-vs",
+  "title": "Stroke Risk Factor ValueSet",
+  "description": "Defines the unknown or absent codes for conditions or risk factors relevant to stroke.",
+  "version": "1.0.0",
+  "url": "http://example.org/ValueSet/stroke-risk-factor-vs",
+  "compose": {
+    "include": [
+      {
+        "valueSet": [
+          "http://example.org/ValueSet/stroke-risk-factor-snomed-vs"
+        ]
+      },
+      {
+        "valueSet": [
+          "http://hl7.org/fhir/uv/ips/ValueSet/absent-or-unknown-problems-uv-ips"
+        ]
+      }
+    ]
+  }
+}

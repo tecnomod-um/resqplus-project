@@ -1,0 +1,61 @@
+{
+  "resourceType": "ValueSet",
+  "status": "draft",
+  "name": "ischemic-stroke-etiology-vs",
+  "id": "ischemic-stroke-etiology-vs",
+  "title": "Ischemic Stroke Etiology ValueSet",
+  "description": "Specifies the determined etiology of an ischemic stroke.",
+  "version": "1.0.0",
+  "url": "http://example.org/fhir/ValueSet/IschemicStrokeEtiologyVS",
+  "experimental": true,
+  "date": "2025-03-31",
+  "publisher": "Example Organization",
+  "contact": [
+    {
+      "name": "Example Organization",
+      "telecom": [
+        {
+          "system": "email",
+          "value": "info@example.org"
+        }
+      ]
+    }
+  ],
+  "compose": {
+    "include": [
+      {
+        "system": "http://snomed.info/sct",
+        "concept": [
+          {
+            "code": "724425005",
+            "display": "Cerebral ischemic stroke due to intracranial large artery atherosclerosis (disorder)"
+          },
+          {
+            "code": "724426006",
+            "display": "Cerebral ischemic stroke due to extracranial large artery atherosclerosis (disorder)"
+          },
+          {
+            "code": "1251566005",
+            "display": "Embolism from heart (disorder)"
+          },
+          {
+            "code": "404684003",
+            "display": "Clinical finding (finding)"
+          },
+          {
+            "code": "16891111000119104",
+            "display": "Cryptogenic stroke (disorder)"
+          },
+          {
+            "code": "230698000",
+            "display": "Lacunar infarction (disorder)"
+          },
+          {
+            "code": "443929000",
+            "display": "Small vessel cerebrovascular disease (disorder)"
+          }
+        ]
+      }
+    ]
+  }
+}

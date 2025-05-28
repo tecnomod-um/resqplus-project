@@ -1,0 +1,49 @@
+{
+  "resourceType": "ValueSet",
+  "status": "draft",
+  "name": "hemorrhagic-stroke-bleeding-reason-vs",
+  "id": "hemorrhagic-stroke-bleeding-reason-vs",
+  "title": "Hemorrhagic Stroke Bleeding Reason ValueSet",
+  "version": "1.0.0",
+  "url": "http://example.org/fhir/ValueSet/HemorrhagicStrokeBleedingReasonVS",
+  "description": "Specifies the identified cause of a hemorrhagic stroke, typically used with an extension.",
+  "experimental": true,
+  "date": "2025-03-31",
+  "publisher": "Example Organization",
+  "contact": [
+    {
+      "name": "Example Organization",
+      "telecom": [
+        {
+          "system": "email",
+          "value": "info@example.org"
+        }
+      ]
+    }
+  ],
+  "compose": {
+    "include": [
+      {
+        "system": "http://snomed.info/sct",
+        "concept": [
+          {
+            "code": "128609009",
+            "display": "Intracranial aneurysm (disorder)"
+          },
+          {
+            "code": "703221003",
+            "display": "Congenital intracranial vascular malformation (disorder)"
+          },
+          {
+            "code": "64572001",
+            "display": "Disease (disorder)"
+          },
+          {
+            "code": "71388002",
+            "display": "Procedure (procedure)"
+          }
+        ]
+      }
+    ]
+  }
+}
