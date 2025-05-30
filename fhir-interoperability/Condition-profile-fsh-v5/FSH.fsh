@@ -4,7 +4,7 @@ Alias: FHIR = http://hl7.org/fhir
 Alias: CondCat = http://terminology.hl7.org/CodeSystem/condition-category
 Alias: CondVerStatus = http://terminology.hl7.org/CodeSystem/condition-ver-status
 Alias: BleedingReasonCS = https://example.org/fhir/CodeSystem/stroke-bleeding-reason
-Alias: IschemicEtiologyCS = https://example.org/fhir/CodeSystem/stroke-ischemic-etiology
+Alias: StrokeEtiologyCS = https://example.org/fhir/CodeSystem/stroke-ischemic-etiology
 Alias: StrokeRiskUnknVS = http://hl7.org/fhir/uv/ips/ValueSet/absent-or-unknown-problems-uv-ips
 
 // ValueSet for Stroke Diagnosis (with Displays)
@@ -102,11 +102,11 @@ Title: "Hemorrhagic Stroke Bleeding Reason ValueSet"
 * include SCT#64572001 "Disease (disorder)"
 * include SCT#71388002 "Procedure (procedure)"
 
-ValueSet: IschemicStrokeEtiologyVS
+ValueSet: StrokeStrokeEtiologyVS
 Id: ischemic-stroke-etiology-vs
-Title: "Ischemic Stroke Etiology ValueSet"
+Title: "Stroke Stroke Etiology ValueSet"
 Description: "Specifies the determined etiology of an ischemic stroke."
-* ^url = "http://example.org/fhir/ValueSet/IschemicStrokeEtiologyVS"
+* ^url = "http://example.org/fhir/ValueSet/StrokeStrokeEtiologyVS"
 * ^version = "1.0.0"
 * ^name = "ischemic-stroke-etiology-vs"
 * ^status = #draft
@@ -133,12 +133,12 @@ Id: hemorrhagic-stroke-bleeding-reason-ext
 * value[x] only CodeableConcept
 * valueCodeableConcept from HemorrhagicStrokeBleedingReasonVS (required)
 
-Extension: IschemicStrokeEtiologyExt
+Extension: StrokeStrokeEtiologyExt
 Id: ischemic-stroke-etiology-ext
 * ^context.type = #element
 * ^context.expression = "Condition"
 * value[x] only CodeableConcept
-* valueCodeableConcept from IschemicStrokeEtiologyVS (required)
+* valueCodeableConcept from StrokeStrokeEtiologyVS (required)
 
 // ------------------ Condition Profiles -------------------------
 
@@ -173,7 +173,7 @@ Description: "Represents the final diagnosis of the current stroke event."
 * onset[x] MS
 
 * extension contains HemorrhagicStrokeBleedingReasonExt named bleedingReason 0..1 MS
-* extension contains IschemicStrokeEtiologyExt named ischemicEtiology 0..1 MS
+* extension contains StrokeStrokeEtiologyExt named ischemicEtiology 0..1 MS
 
 // --- 2. Profile for Stroke Risk Factor Conditions ---
 Profile: StrokeRiskFactorConditionProfile
