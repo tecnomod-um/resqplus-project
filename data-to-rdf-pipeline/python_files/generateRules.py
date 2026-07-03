@@ -1,6 +1,8 @@
 import csv
 import argparse
+import template_manager
 
+### GENERATION FUNCTIONS ###
 
 def generate_observation_result_statement(row,csv_file_name):
     rule_name = row['ontology_mapping'].strip() + '_' + row['field_id'].strip()
@@ -8,7 +10,6 @@ def generate_observation_result_statement(row,csv_file_name):
     field_id = row['field_id'].strip()
     observable = row['observable'].strip()
     source_procedure = extract_last_part(row['source_procedure'].strip())
-    value_type = row['value_type'].strip()
     
     regla = f"""
         {rule_name}_ObservationResultStatement:
@@ -26,20 +27,11 @@ def generate_observation_result_statement(row,csv_file_name):
                     - parameter: grel:valueParam
                       value: $(temporal_context)
                     type: iri
-                - p: scdm:situationContext
-                  o:
-                  - function: resq-function:add_observable_statement_context
-                    parameters:
-                    - parameter: grel:valueParam
-                      value: $(value_type)
-                    - parameter: grel:valueParam1
-                      value: $(field_value)
-                    type: iri
         """
     
     # Handling value types other than Boolean
-    if value_type != 'Boolean':
-        regla += f"        - [scdm:hasObservableValue, base:PrimitiveValue_{field_id}_$(case_id)~iri]\n"
+    #if value_type != 'Boolean':
+    regla += f"        - [scdm:hasObservableValue, base:PrimitiveValue_{field_id}_$(case_id)~iri]\n"
 
     return regla
 
@@ -67,24 +59,12 @@ def generate_procedure(row,csv_file_name):
                 - [a, {source_procedure_iri}~iri]
     """
 
-    # Handling procedure parts if they exist
-    #procedure_part = row['procedure_part'].strip()
-    #if procedure_part:
-    #    if '#' in procedure_part:
-    #        procedure_part = procedure_part.split('#')[-1]
-    #    else:
-    #        procedure_part = procedure_part.split('/')[-1]
-    #
-        # Link the procedure part as a sub-process of the main procedure
-    #    regla += f"            - [scdm:isSubProcessOf, base:Procedure_{procedure_part}_$(case_id)~iri]\n"
-
     return regla
 
 
 def generate_observation_result(row,csv_file_name):
     rule_name = row['ontology_mapping'].strip() + '_' + row['field_id'].strip()
     field_id = row['field_id'].strip()
-    field_value = row['field_value'].strip()
     value_type = row['value_type'].strip().lower()
 
     # Mapping value types to XSD types
@@ -93,7 +73,8 @@ def generate_observation_result(row,csv_file_name):
         'float': 'xsd:double',
         'datetime': 'xsd:dateTime',
         'string': 'xsd:string',  
-        'boolean': 'xsd:boolean'
+        'boolean': 'xsd:boolean',
+        'date': 'xsd:date'
     }
 
     # Default to xsd:string if datatype is not recognized
@@ -106,19 +87,29 @@ def generate_observation_result(row,csv_file_name):
             s: base:PrimitiveValue_{field_id}_$(case_id)
             po:
                 - [a, scdm:QuantitativeResultValue~iri]
-                - [btl2:hasValue, $(field_value), {datatype_value}]  
         """
+
+    regla += f"""    
+                - p: btl2:hasValue
+                  o:
+                    value: $(field_value)
+                    datatype: {datatype_value}
+                  condition:
+                    function: equal
+                    parameters:
+                      - value: $(field_value)
+                      - value: ""
+                        type: string
+                    negate: true
+            """
+  
     return regla
 
 def generate_clinical_situation_statement(row,csv_file_name):
     ontology_mapping = row['ontology_mapping'].strip()
     source_procedure = extract_last_part(row['source_procedure'].strip())
     categorical_ontology_mapping = row['categorical_ontology_mapping'].strip()
-    field_id = row['field_id'].strip()
-    rule_name = ontology_mapping+'_'+field_id
     value_type = row['value_type'].strip()
-    additional_rules = ''
-
 
     regla = f"""
         {ontology_mapping}_ClinicalSituationStatement:
@@ -128,6 +119,15 @@ def generate_clinical_situation_statement(row,csv_file_name):
             po:
                 - [a, resqplus:{ontology_mapping}~iri]
                 - [scdm:isResultOf, base:Procedure_{source_procedure}_$(case_id)~iri]
+                - p: scdm:isPartOf
+                  o:
+                  - function: resq-function:extract_last_part
+                    parameters:
+                    - parameter: grel:valueParam
+                      value: $(procedure_part)
+                    - parameter: grel:valueParam1
+                      value: $(case_id)
+                    type: iri
                 - p: scdm:temporalContext
                   o:
                   - function: resq-function:add_temporal_context
@@ -157,8 +157,73 @@ def generate_clinical_situation_statement(row,csv_file_name):
     procedure_result = row['procedure_result'].strip()
     if procedure_result:
         # Tratar de forma especial esto en preprocesamiento
-        procedure = procedure_result
         procedure_result = procedure_result.split('#')[-1] if '#' in procedure_result else procedure_result.split('/')[-1]
+        regla += f"""                - p: scdm:isResultOf 
+                  o: 
+                  - function: resq-function:extract_last_part 
+                    parameters: 
+                    - parameter: grel:valueParam 
+                      value: $(procedure_result)
+                    - parameter: grel:valueParam1
+                      value: $(case_id)
+                    type: iri
+            """
+    return regla
+
+def generate_clinical_situation_statement_new(row, csv_file_name):
+    ontology_mapping = row['ontology_mapping'].strip()
+    source_procedure = extract_last_part(row['source_procedure'].strip())
+    categorical_ontology_mapping = row['categorical_ontology_mapping'].strip()
+    value_type = row['value_type'].strip()
+    row_field_value = row['field_value'].strip()
+
+    regla = f"""
+        {ontology_mapping}_ClinicalSituationStatement:
+            sources: 
+                - ['{csv_file_name}~csv']
+            s: base:ClinicalSituationSt_$(ontology_mapping)_$(field_id)_$(case_id)
+            po:
+                - [a, resqplus:{ontology_mapping}~iri]
+                - [scdm:isResultOf, base:Procedure_{source_procedure}_$(case_id)~iri]
+                - p: scdm:temporalContext
+                  o:
+                  - function: resq-function:add_temporal_context
+                    parameters:
+                    - parameter: grel:valueParam
+                      value: $(temporal_context)
+                    type: iri
+                - p: scdm:situationContext
+                  o:
+                  - function: resq-function:add_situation_context
+                    parameters: 
+                    - parameter: grel:valueParam
+                      value: $(value_type)
+                    - parameter: grel:valueParam1
+                      value: $(field_value)
+                    - parameter: grel:valueParam2
+                      value: $(statement_context)
+                    type: iri
+    """
+
+    if value_type == 'Boolean':
+        regla += f"""
+                - p: scdm:hasValue
+                  o:
+                    - value: {row_field_value}
+                      type: literal
+                      datatype: xsd:boolean
+        """
+
+    if value_type == 'Categorical' and categorical_ontology_mapping != '':
+        regla += f"            - [scdm:representsSituation, $(categorical_ontology_mapping)~iri]\n"
+    else:
+        regla += f"            - [scdm:representsSituation, $(finding)~iri]\n"
+
+    procedure_result = row['procedure_result'].strip()
+    if procedure_result:
+        # Tratar de forma especial esto en preprocesamiento
+        procedure_result = (procedure_result.split('#')[-1] if '#' in procedure_result 
+                             else procedure_result.split('/')[-1])
         regla += f"""                - p: scdm:isResultOf 
                   o: 
                   - function: resq-function:extract_last_part 
@@ -190,6 +255,15 @@ def generate_clinical_procedure_statement(row,csv_file_name):
             po:
                 - [a, resqplus:{ontology_mapping}~iri]
                 - [scdm:isResultOf, base:Procedure_{source_procedure}_$(case_id)~iri]
+                - p: scdm:isPartOf
+                  o:
+                  - function: resq-function:extract_last_part
+                    parameters:
+                    - parameter: grel:valueParam
+                      value: $(procedure_part)
+                    - parameter: grel:valueParam1
+                      value: $(case_id)
+                    type: iri
                 - p: scdm:procedureContext
                   o:
                   - function: resq-function:add_procedure_statement_context
@@ -200,6 +274,8 @@ def generate_clinical_procedure_statement(row,csv_file_name):
                       value: $(field_value)
                     - parameter: grel:valueParam3
                       value: $(categorical_ontology_mapping)
+                    - parameter: grel:valueParam4
+                      value: $(statement_context)
                     type: iri
                 - p: scdm:procedureReason
                   o:
@@ -225,6 +301,8 @@ def generate_clinical_procedure_statement(row,csv_file_name):
                     parameters:
                     - parameter: grel:valueParam
                       value: $(procedure)
+                    - parameter: grel:valueParam1
+                      value: $(categorical_ontology_mapping)
                     type: iri
                 - p: scdm:temporalContext
                   o:
@@ -249,7 +327,7 @@ def generate_clinical_procedure_statement(row,csv_file_name):
             """
     #Categorical
     else:
-        if field_value.capitalize() in ['Yes','No']:
+        if str(field_value).strip().upper() in ['YES', 'NO']:
             regla += f"""            - p: scdm:representsProcedure 
                   o: 
                   - function: resq-function:extract_last_part 
@@ -260,7 +338,7 @@ def generate_clinical_procedure_statement(row,csv_file_name):
                       value: $(case_id)
                     type: iri
             """
-        elif categorical_ontology_mapping != '' and procedure not in ['dateTime', 'procedureReason','procedureLocation', 'performer']:
+        elif str(categorical_ontology_mapping).strip().lower() != 'nan' and procedure not in ['dateTime', 'procedureReason','procedureLocation', 'performer']:
             regla += f"""            - p: scdm:representsProcedure 
                   o: 
                   - function: resq-function:extract_last_part 
@@ -271,15 +349,16 @@ def generate_clinical_procedure_statement(row,csv_file_name):
                       value: $(case_id)
                     type: iri
             """
+        
     return regla
 
 
 def generate_represented_procedure(row,csv_file_name):
-    categorical_ontology_mapping = row['categorical_ontology_mapping'].strip()
-    procedure = row['procedure'].strip()
-    if categorical_ontology_mapping == '' and "http" not in procedure:
+    categorical_ontology_mapping = str(row.get('categorical_ontology_mapping', '')).strip()
+    procedure = str(row.get('procedure', '')).strip()
+    if categorical_ontology_mapping.lower() == 'nan' and "http" not in procedure:
         return 
-    ontology_mapping = row['ontology_mapping'].strip()
+    ontology_mapping = str(row.get('ontology_mapping', '')).strip()
     rule_name = f"{ontology_mapping}_RepresentedProcedure"
     regla = f"""
         {rule_name}:
@@ -298,6 +377,10 @@ def generate_represented_procedure(row,csv_file_name):
                 value: $(categorical_ontology_mapping)
               - parameter: grel:valueParam4
                 value: $(case_id)
+              - parameter: grel:valueParam5
+                value: $(procedure_reason)
+              - parameter: grel:valueParam6
+                value: $(procedure_location)
               type: iri
             po:
               - p: rdf:type
@@ -312,6 +395,8 @@ def generate_represented_procedure(row,csv_file_name):
                     value: $(field_value)
                   - parameter: grel:valueParam3
                     value: $(categorical_ontology_mapping)
+                  - parameter: grel:valueParam4
+                    value: $(procedure_reason)
                   type: iri
 
         """     
@@ -320,6 +405,9 @@ def generate_represented_procedure(row,csv_file_name):
 
 def extract_last_part(uri):
     """Extracts the last significant part of a URI, handling both '#' and '/' separators."""
+    if not uri or str(uri).strip().lower() == 'nan':
+        return ''
+    uri = str(uri).strip()
     return uri.split('#')[-1] if '#' in uri else uri.split('/')[-1]
 
 
@@ -334,185 +422,122 @@ def generate_rule(row, pattern_handlers,csv_file_name):
                 rules.append(rule)
         return "\n".join(rules)
     else:
-        print(f"Tipo de patrón desconocido o sin manejador: {pattern_type}")  
+        print(f"Unknown or unhandled pattern type: {pattern_type}")  
         return ''  
+    
+
+### MAIN FUNCTIONS ###
+
+def parse_arguments():
+    """
+    Parses command line arguments for input and output file paths.
+    Returns:
+        argparse.Namespace: Contains the input and output file paths.
+    """
+
+    parser = argparse.ArgumentParser(
+        description="Generates YARRRML files from a CSV"
+    )
+    parser.add_argument(
+        '--input', type=str, required=True,
+        help='Path to the input CSV file'
+    )
+    parser.add_argument(
+        '--output', type=str, required=True,
+        help='Path to the output YARRRML file'
+    )
+    return parser.parse_args()
 
 
-def main():
-    parser = argparse.ArgumentParser(description="Genera archivos YARRRML a partir de un CSV")
-    parser.add_argument('--input', type=str, help='Ruta completa al archivo CSV de entrada')
-    parser.add_argument('--output', type=str, help='Ruta completa al archivo YARRRML de salida')
-    args = parser.parse_args()
+def load_template(csv_file_name):
+    """
+    Reads the YARRRML template from the template manager.
+    Raises:
+        FileNotFoundError: If the template file does not exist.
+    Returns:
+        str: The content of the YARRRML template file.
+    """
+    return template_manager.generate_yarrrml_template(csv_file_name)
 
-    csv_file_name = args.input
-    output_file_path = args.output
-    pattern_handlers = {
-        'ObservationResultStatement': [generate_observation_result_statement, generate_procedure, generate_observation_result],
-        'ClinicalSituationStatement': [generate_clinical_situation_statement,generate_procedure],
-        'ClinicalProcedureStatement': [generate_clinical_procedure_statement,generate_represented_procedure, generate_procedure ]
+
+def load_pattern_handlers():
+    """
+    Returns a dictionary mapping pattern types to their respective handler functions.
+    """
+    return {
+        'ObservationResultStatement': [
+            generate_observation_result_statement,
+            generate_procedure,
+            generate_observation_result
+        ],
+        'ClinicalSituationStatement': [
+            generate_clinical_situation_statement,
+            generate_procedure
+        ],
+        'ClinicalProcedureStatement': [
+            generate_clinical_procedure_statement,
+            generate_represented_procedure,
+            generate_procedure
+        ]
     }
 
-    yarrml_template = f"""
-    authors: Catalina Martinez-Costa <cmartinezcosta@um.es>
-    prefixes:
-      base: http://resqplus-resources/ontologies/resqplus-data#
-      resqplus: http://www.semanticweb.org/catimc/resqplus#
-      sct: http://snomed.info/id/
-      scdm: http://www.semanticweb.org/catimc/SemanticCommonDataModel#
-      btl2: http://purl.org/biotop/btl2.owl#
-      fno:  https://w3id.org/function/ontology# 
-      fnom: https://w3id.org/function/vocabulary/mapping#
-      ex: http://example.org/functions#
-      resq-function: http://ontology.resq.um.es/RES-Q_Functions/
-      grel: http://users.ugent.be/bjdmeest/function/grel.ttl#
-      rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
-      xsd: http://www.w3.org/2001/XMLSchema#
 
-
-    mappings:
-
-        ClinicalCase:
-            sources: 
-                    - ['{csv_file_name}~csv']
-            s: base:Case_$(case_id)
-            po:
-              - [a, resqplus:ClinicalCase]
-              - [resqplus:caseId, $(case_id), xsd:string]
-              - [scdm:hasInformationAboutProvider, base:InformationAboutResqplusProviderOfInformation_$(case_id)~iri]
-              - [scdm:hasInformationAboutProvider, base:InformationAboutResqplusSourceOfInformation_$(case_id)~iri]
-              - p: scdm:hasPart
-                o:
-                - function: resq-function:generatePart
-                  parameters:
-                  - parameter: grel:valueParam
-                    value: $(pattern_type)
-                  - parameter: grel:valueParam1
-                    value: $(field_id)
-                  - parameter: grel:valueParam2
-                    value: $(ontology_mapping)
-                  - parameter: grel:valueParam3
-                    value: $(case_id)
-                  type: iri
-              #- [scdm:hasPart, base:AdmissionAge_$(case_id)~iri]
-        
-        InformationAboutProvider:
-            sources: 
-                    - ['{csv_file_name}~csv']
-            s: base:InformationAboutResqplusProviderOfInformation_$(case_id)
-            po:
-              - [a, resqplus:InformationAboutResqplusProviderOfInformation]
-              - [btl2:represents, base:ResqplusProvider_$(case_id)~iri]
-
-        InformationAboutSource:
-            sources: 
-                    - ['{csv_file_name}~csv']
-            s: base:InformationAboutResqplusSourceOfInformation_$(case_id)
-            po:
-              - [a, resqplus:InformationAboutResqplusSourceOfInformation]
-              - [btl2:represents, base:ResqplusSource_$(case_id)~iri]
-        
-        ResqplusProvider:
-            sources: 
-                    - ['{csv_file_name}~csv']
-            s: base:ResqplusProvider_$(case_id)
-            po:
-              - [a, resqplus:ResqplusProvider]
-              #- [base:providerId,$(provider_id)]
-              #- [rdfs:label, $(provider)]
-              #- [resqplus:providerDepartment, $(department)]
-              #- [resqplus:providerHospitalType, $(hospital_type)]  
-
-        ResqplusSource:
-            sources: 
-                    - ['{csv_file_name}~csv']
-            s: base:ResqplusSource_$(case_id)
-            po:
-              - [a, resqplus:ResqplusSource]
-              #- [base:sourceId,$(source)]        
-        
-        StatementTemporalContext:
-            sources: 
-                - ['{csv_file_name}~csv']
-            s:
-            - function: resq-function:generate_temporal_context
-              parameters:
-              - parameter: grel:valueParam
-                value: $(temporal_context)
-              type: iri
-            po:
-                - [a, $(temporal_context)~iri]
-            
-        StatementContext:
-            sources: 
-                - ['{csv_file_name}~csv']
-            s:
-            - function: resq-function:generate_statement_context
-              parameters:
-              - parameter: grel:valueParam
-                value: $(statement_context)
-              type: iri
-            po:
-                - [a, $(statement_context)~iri]
-
-        ProcedureLocation:
-            sources: 
-                - ['{csv_file_name}~csv']
-            s:
-            - function: resq-function:generate_procedure_location
-              parameters:
-              - parameter: grel:valueParam
-                value: $(procedure_location)
-              type: iri
-            po:
-                - [a, $(procedure_location)~iri]
-
-        ProcedureReason:
-            sources: 
-                - ['{csv_file_name}~csv']
-            s:
-            - function: resq-function:generate_procedure_reason
-              parameters:
-              - parameter: grel:valueParam
-                value: $(procedure_reason)
-              type: iri
-            po:
-                - [a, $(procedure_reason)~iri]
-        
-        ProcedureDateTime:        
-          sources: 
-              - ['{csv_file_name}~csv']
-          s: 
-          - function: resq-function:generate_procedure_dateTime
-            parameters: 
-            - parameter: grel:valueParam
-              value: $(procedure)
-            - parameter: grel:valueParam1
-              value: $(categorical_ontology_mapping)
-            type: iri
-          po:
-            - [a, $(categorical_ontology_mapping)~iri]  
+def generate_rules(csv_file_name, pattern_handlers):
+    """
+    Reads a CSV file and generates YARRRML rules based on the patterns defined in pattern_handlers.
+    Args:
+        csv_file_name (str): Path to the input CSV file.
+        pattern_handlers (dict): Dictionary mapping pattern types to handler functions.
+    Returns:
+        list: List of generated YARRRML rules.
     """
 
     rules = []
     field_ids_seen = set()
 
+    # Read CSV and accumulate rules, skipping duplicates
     with open(csv_file_name, mode='r', encoding='utf-8-sig') as file:
         csv_reader = csv.DictReader(file)
         for row in csv_reader:
             field_id = row['field_id'].strip()
             if field_id in field_ids_seen:
-                break  # Detener el procesamiento si el field_id ya ha sido visto
+                continue
             field_ids_seen.add(field_id)
-            rule = generate_rule(row, pattern_handlers,csv_file_name)
+
             print(f"field:{field_id}")
-            if rule != '':
+            rule = generate_rule(row, pattern_handlers, csv_file_name)
+            if rule:
                 rules.append(rule)
-                # Combinar la plantilla con los mapeos generados
-                yarrml_output = yarrml_template + '\n'.join(rules)
-                # Escribir el YARRRML generado en el archivo
-                with open(output_file_path, 'w') as output_file:
-                    output_file.write(yarrml_output)
-                    print(f"YARRRML generado guardado en: {output_file_path}")
+
+    return rules
+    
+
+def write_output(template, rules, output_file_path):
+    """
+    Writes the YARRRML output to a file, combining the template and generated rules.
+    Args:
+        template (str): The YARRRML template.
+        rules (list): List of generated rules.
+        output_file_path (str): Path to the output file.
+    """
+    yarrml_output = template + '\n'.join(rules)
+    with open(output_file_path, 'w', encoding='utf-8') as output_file:
+        output_file.write(yarrml_output)
+        print(f"Generated YARRRML saved at: {output_file_path}")
+
+def main():
+    args = parse_arguments()
+
+    csv_file_name = args.input
+    output_file_path = args.output
+
+    pattern_handlers = load_pattern_handlers()
+    yarrml_template = load_template(csv_file_name)
+
+    rules = generate_rules(csv_file_name, pattern_handlers)
+    write_output(yarrml_template, rules, output_file_path)
+
+    
 
 if __name__ == "__main__":
     main()
