@@ -1,0 +1,25 @@
+name: OQuaRE evaluation
+
+on: [push]
+
+permissions:
+  contents: write # the action creates/modifies files in the repo
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: Evaluate ontologies
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.9'
+      - name: OQuaRE module
+        uses: tecnomod-um/oquare-metrics@v3.0
+        with:
+          ontology-folders: ontologies/most_recent_version
+          contents-folder: ontologies/most_recent_version/oquare-evaluation
